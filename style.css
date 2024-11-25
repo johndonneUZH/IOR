@@ -1,0 +1,104 @@
+/* General styles */
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: linear-gradient(to right, rgb(78, 182, 78), rgb(149, 149, 228));
+    background-size: 200% 200%;
+    animation: gradientAnimation 5s ease infinite;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+@keyframes gradientAnimation {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.container {
+    background: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.map-list {
+    list-style: none;
+    padding: 0;
+}
+  
+  .map-list li {
+    margin: 10px 0;
+  }
+  
+  .map-list a {
+    text-decoration: none;
+    color: #fff;
+    background: #007bff;
+    padding: 15px 20px;
+    border-radius: 5px;
+    transition: background 0.3s;
+    display: block; /* Makes the button take up full width */
+    text-align: center;
+  }
+  
+  .map-list a:hover {
+    background: #0056b3;
+  }
+  
+  /* Styles for the map item */
+  .map-item {
+    margin-bottom: 30px; /* Adds space below the map item */
+  }
+  
+  .map-item a {
+    width: 100%; 
+    padding: 10px 0; 
+    background: #007bff;
+    color: #fff;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    margin: 10px 0;
+  }
+  
+  .map-item a:hover {
+    background: #0056b3;
+  }
+  
+  /* Styles for the scenario group */
+  .scenario-group {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  .scenario-group li {
+    margin: 0 10px;
+  }
+  
+  .scenario-group a {
+    background: #28a745; /* Green buttons for scenarios */
+    display: block;
+    text-align: center;
+    padding: 10px 20px;
+  }
+  
+  .scenario-group a:hover {
+    background: #104a1c; /* Darker green hover effect */
+  }
