@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    
+        <script>
+            L_NO_TOUCH = false;
+            L_DISABLE_3D = false;
+        </script>
+    
+    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
+    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
+    
+            <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+            <style>
+                #map_95f9ff089942e4d2a5e4fe6d2ca2f779 {
+                    position: relative;
+                    width: 100.0%;
+                    height: 100.0%;
+                    left: 0.0%;
+                    top: 0.0%;
+                }
+                .leaflet-container { font-size: 1rem; }
+            </style>
+        
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-ant-path@1.1.2/dist/leaflet-ant-path.min.js"></script>
+</head>
+<body>
+    
+    
+<div style="position: fixed; 
+            bottom: 50px; left: 50px; width: 180px; height: 200px; 
+            border:2px solid grey; z-index:9999; font-size:14px;
+            background-color:white; opacity: 0.9; padding: 10px;">
+    <h4 style="margin: 0; text-align: center;">Route Types</h4>
+    <div style="margin-bottom: 10px;">
+        <i style="background: yellow; display: inline-block; width: 12px; height: 12px; margin-right: 5px;"></i> Manufacturer<br>
+        <i style="background: green; display: inline-block; width: 12px; height: 12px; margin-right: 5px;"></i> CrossDock<br>
+        <i style="background: red; display: inline-block; width: 12px; height: 12px; margin-right: 5px;"></i> Distribution center<br>
+        <i style="background: purple; display: inline-block; width: 12px; height: 12px; margin-right: 5px;"></i> OptionalSource<br>
+    </div>
+    <hr style="margin: 5px 0;">
+    <div style="text-align: center;">
+        <b>Total Cost:</b> $71.38M<br>
+        <b>Total Emissions:</b> 4813.6 Tons CO<sub>2</sub>
+    </div>
+</div>
+    
+            <div class="folium-map" id="map_95f9ff089942e4d2a5e4fe6d2ca2f779" ></div>
+        
+</body>
+<script>
+    
+    
+            var map_95f9ff089942e4d2a5e4fe6d2ca2f779 = L.map(
+                "map_95f9ff089942e4d2a5e4fe6d2ca2f779",
+                {
+                    center: [47.46432938846154, 20.232742377423076],
+                    crs: L.CRS.EPSG3857,
+                    zoom: 5,
+                    zoomControl: true,
+                    preferCanvas: false,
+                }
+            );
+
+            
+
+        
+    
+            var tile_layer_da413d7ff493d2d1724f1cd1c2569f00 = L.tileLayer(
+                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
+            );
+        
+    
+            tile_layer_da413d7ff493d2d1724f1cd1c2569f00.addTo(map_95f9ff089942e4d2a5e4fe6d2ca2f779);
+        
+    
+            var marker_9bc281eadd4d52b8e3bb081723a4d05d = L.marker(
+                [31.2323437, 121.4691024],
+                {}
+            ).addTo(map_95f9ff089942e4d2a5e4fe6d2ca2f779);
+        
+    
+            var icon_19018a2d2f29938c987ed365bd260125 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "orange", "prefix": "glyphicon"}
+            );
+            marker_9bc281eadd4d52b8e3bb081723a4d05d.setIcon(icon_19018a2d2f29938c987ed365bd260125);
+        
+    
+        var popup_b9566f25dea3c48e75406008880c357f = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_530fa17663a3f528d2924975d33e75e1 = $(`<div id="html_530fa17663a3f528d2924975d33e75e1" style="width: 100.0%; height: 100.0%;">Shanghai (Source)</div>`)[0];
+                popup_b9566f25dea3c48e75406008880c357f.setContent(html_530fa17663a3f528d2924975d33e75e1);
+            
+        
+
+        marker_9bc281eadd4d52b8e3bb081723a4d05d.bindPopup(popup_b9566f25dea3c48e75406008880c357f)
+        ;
+
+        
+    
+    
+            var marker_c1aeef53b3f35732b34c18990d471f1e = L.marker(
+                [54.3617, 18.6514],
+                {}
+            ).addTo(map_95f9ff089942e4d2a5e4fe6d2ca2f779);
+        
+    
+            var icon_cc00150d7ad50a75776190896579537e = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "green", "prefix": "glyphicon"}
+            );
+            marker_c1aeef53b3f35732b34c18990d471f1e.setIcon(icon_cc00150d7ad50a75776190896579537e);
+        
+    
+        var popup_c22375ce3e3628e950d6fa3e555f798b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_34154956b10da42b5d66a93c14ec5934 = $(`<div id="html_34154956b10da42b5d66a93c14ec5934" style="width: 100.0%; height: 100.0%;">Gdansk (CrossDock)</div>`)[0];
+                popup_c22375ce3e3628e950d6fa3e555f798b.setContent(html_34154956b10da42b5d66a93c14ec5934);
+            
+        
+
+        marker_c1aeef53b3f35732b34c18990d471f1e.bindPopup(popup_c22375ce3e3628e950d6fa3e555f798b)
+        ;
+
+        
+    
+    
+            var marker_a1769243ad03ffc9250dbde6bacbde8f = L.marker(
+                [50.3343, 2.929],
+                {}
+            ).addTo(map_95f9ff089942e4d2a5e4fe6d2ca2f779);
+        
+    
+            var icon_acdf3fb5f0677251be439844b0520777 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_a1769243ad03ffc9250dbde6bacbde8f.setIcon(icon_acdf3fb5f0677251be439844b0520777);
+        
+    
+        var popup_ef830d0c0a1ee4462ca43e2b79d40044 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_b9df272062efbe02ac48a1c47649b84c = $(`<div id="html_b9df272062efbe02ac48a1c47649b84c" style="width: 100.0%; height: 100.0%;">FR6216 (Distribution center)</div>`)[0];
+                popup_ef830d0c0a1ee4462ca43e2b79d40044.setContent(html_b9df272062efbe02ac48a1c47649b84c);
+            
+        
+
+        marker_a1769243ad03ffc9250dbde6bacbde8f.bindPopup(popup_ef830d0c0a1ee4462ca43e2b79d40044)
+        ;
+
+        
+    
+    
+            var marker_48ef3d3e06f53ac10783f190b326df65 = L.marker(
+                [50.029, 15.809],
+                {}
+            ).addTo(map_95f9ff089942e4d2a5e4fe6d2ca2f779);
+        
+    
+            var icon_23516be160a141db76002789ccd6ba19 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_48ef3d3e06f53ac10783f190b326df65.setIcon(icon_23516be160a141db76002789ccd6ba19);
+        
+    
+        var popup_14f3df00229881e4bce7cfcf39ee2c5b = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_585f6b24a41bb80061f34621e21b968a = $(`<div id="html_585f6b24a41bb80061f34621e21b968a" style="width: 100.0%; height: 100.0%;">PED (Distribution center)</div>`)[0];
+                popup_14f3df00229881e4bce7cfcf39ee2c5b.setContent(html_585f6b24a41bb80061f34621e21b968a);
+            
+        
+
+        marker_48ef3d3e06f53ac10783f190b326df65.bindPopup(popup_14f3df00229881e4bce7cfcf39ee2c5b)
+        ;
+
+        
+    
+    
+            var marker_3129e834154aebb0623632d3617906e3 = L.marker(
+                [56.896, 24.046],
+                {}
+            ).addTo(map_95f9ff089942e4d2a5e4fe6d2ca2f779);
+        
+    
+            var icon_85a3eafda595a245ca0267255d46a3c1 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_3129e834154aebb0623632d3617906e3.setIcon(icon_85a3eafda595a245ca0267255d46a3c1);
+        
+    
+        var popup_d4a5291a873c4d3c534dc32986e6b1cd = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_1e891659f8846ea95711bf0f093f1e16 = $(`<div id="html_1e891659f8846ea95711bf0f093f1e16" style="width: 100.0%; height: 100.0%;">RIX (Distribution center)</div>`)[0];
+                popup_d4a5291a873c4d3c534dc32986e6b1cd.setContent(html_1e891659f8846ea95711bf0f093f1e16);
+            
+        
+
+        marker_3129e834154aebb0623632d3617906e3.bindPopup(popup_d4a5291a873c4d3c534dc32986e6b1cd)
+        ;
+
+        
+    
+    
+            var marker_22d755b21b453693810346113af60115 = L.marker(
+                [38.044, 23.799],
+                {}
+            ).addTo(map_95f9ff089942e4d2a5e4fe6d2ca2f779);
+        
+    
+            var icon_64513b7b028143314580c136579c1abc = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "red", "prefix": "glyphicon"}
+            );
+            marker_22d755b21b453693810346113af60115.setIcon(icon_64513b7b028143314580c136579c1abc);
+        
+    
+        var popup_015063e30ffeee1c15729ce81ae410ac = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_1f1f546aa250e069b34919ab0965c7f7 = $(`<div id="html_1f1f546aa250e069b34919ab0965c7f7" style="width: 100.0%; height: 100.0%;">GMZ (Distribution center)</div>`)[0];
+                popup_015063e30ffeee1c15729ce81ae410ac.setContent(html_1f1f546aa250e069b34919ab0965c7f7);
+            
+        
+
+        marker_22d755b21b453693810346113af60115.bindPopup(popup_015063e30ffeee1c15729ce81ae410ac)
+        ;
+
+        
+    
+    
+            var marker_a9be30c4eeb403317deabc38e2125e6c = L.marker(
+                [51.7834994, -0.894644054],
+                {}
+            ).addTo(map_95f9ff089942e4d2a5e4fe6d2ca2f779);
+        
+    
+            var icon_26a20fd3ed01dbcd3e0dd0970938685a = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_a9be30c4eeb403317deabc38e2125e6c.setIcon(icon_26a20fd3ed01dbcd3e0dd0970938685a);
+        
+    
+        var popup_b3d9929c81f1a73c63a00bc291ebcef4 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_b5397007f50fc8261c827949908e8453 = $(`<div id="html_b5397007f50fc8261c827949908e8453" style="width: 100.0%; height: 100.0%;">FLXXC (Retailer)</div>`)[0];
+                popup_b3d9929c81f1a73c63a00bc291ebcef4.setContent(html_b5397007f50fc8261c827949908e8453);
+            
+        
+
+        marker_a9be30c4eeb403317deabc38e2125e6c.bindPopup(popup_b3d9929c81f1a73c63a00bc291ebcef4)
+        ;
+
+        
+    
+    
+            var marker_6a7821e539126e9f22ea8968c400d5b9 = L.marker(
+                [48.7858921, 3.0292059],
+                {}
+            ).addTo(map_95f9ff089942e4d2a5e4fe6d2ca2f779);
+        
+    
+            var icon_23423c6b2b11f3bab1329593cccd3884 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_6a7821e539126e9f22ea8968c400d5b9.setIcon(icon_23423c6b2b11f3bab1329593cccd3884);
+        
+    
+        var popup_dd14c4d8e4e93ae62f69d34ae6eb0aae = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_d1cd0f9527a3f9a64eadb7dc9528f5f1 = $(`<div id="html_d1cd0f9527a3f9a64eadb7dc9528f5f1" style="width: 100.0%; height: 100.0%;">ALKFM (Retailer)</div>`)[0];
+                popup_dd14c4d8e4e93ae62f69d34ae6eb0aae.setContent(html_d1cd0f9527a3f9a64eadb7dc9528f5f1);
+            
+        
+
+        marker_6a7821e539126e9f22ea8968c400d5b9.bindPopup(popup_dd14c4d8e4e93ae62f69d34ae6eb0aae)
+        ;
+
+        
+    
+    
+            var marker_a4171feb577b86af5ac6f3d31554482d = L.marker(
+                [53.6736529, 10.2358999],
+                {}
+            ).addTo(map_95f9ff089942e4d2a5e4fe6d2ca2f779);
+        
+    
+            var icon_e486e6610a9419e7bcf788dbd7669ed8 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_a4171feb577b86af5ac6f3d31554482d.setIcon(icon_e486e6610a9419e7bcf788dbd7669ed8);
+        
+    
+        var popup_1742afc1aaa65e743223877c28fe76f6 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_abe67d0f41c5db43382c62ae4213b2c9 = $(`<div id="html_abe67d0f41c5db43382c62ae4213b2c9" style="width: 100.0%; height: 100.0%;">KSJER (Retailer)</div>`)[0];
+                popup_1742afc1aaa65e743223877c28fe76f6.setContent(html_abe67d0f41c5db43382c62ae4213b2c9);
+            
+        
+
+        marker_a4171feb577b86af5ac6f3d31554482d.bindPopup(popup_1742afc1aaa65e743223877c28fe76f6)
+        ;
+
+        
+    
+    
+            var marker_8ed42cdc7cd1e70728be1059f45f8bc7 = L.marker(
+                [54.8982139, 23.9044817],
+                {}
+            ).addTo(map_95f9ff089942e4d2a5e4fe6d2ca2f779);
+        
+    
+            var icon_d0f70f2aa4b0d1fb50919b1dbb606e13 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_8ed42cdc7cd1e70728be1059f45f8bc7.setIcon(icon_d0f70f2aa4b0d1fb50919b1dbb606e13);
+        
+    
+        var popup_9dbfa8e5fd1a82f8d1b5677827e432dd = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_21fcfe61284d16c922c73c1d451a02a7 = $(`<div id="html_21fcfe61284d16c922c73c1d451a02a7" style="width: 100.0%; height: 100.0%;">GXEQH (Retailer)</div>`)[0];
+                popup_9dbfa8e5fd1a82f8d1b5677827e432dd.setContent(html_21fcfe61284d16c922c73c1d451a02a7);
+            
+        
+
+        marker_8ed42cdc7cd1e70728be1059f45f8bc7.bindPopup(popup_9dbfa8e5fd1a82f8d1b5677827e432dd)
+        ;
+
+        
+    
+    
+            var marker_f20dca7ab61a8ad84f346915fe27b765 = L.marker(
+                [40.7134491, -8.4825639],
+                {}
+            ).addTo(map_95f9ff089942e4d2a5e4fe6d2ca2f779);
+        
+    
+            var icon_6f367ff435008a3cd0035f15717a3a40 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_f20dca7ab61a8ad84f346915fe27b765.setIcon(icon_6f367ff435008a3cd0035f15717a3a40);
+        
+    
+        var popup_ec10c701cb35b076f88b5f6e07db3fcb = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_15fb51cb186d1745a3e6754339b310ff = $(`<div id="html_15fb51cb186d1745a3e6754339b310ff" style="width: 100.0%; height: 100.0%;">OAHLE (Retailer)</div>`)[0];
+                popup_ec10c701cb35b076f88b5f6e07db3fcb.setContent(html_15fb51cb186d1745a3e6754339b310ff);
+            
+        
+
+        marker_f20dca7ab61a8ad84f346915fe27b765.bindPopup(popup_ec10c701cb35b076f88b5f6e07db3fcb)
+        ;
+
+        
+    
+    
+            var marker_27968065ec343dd55a1f4ac4831b13d2 = L.marker(
+                [38.8735511, -9.0785504],
+                {}
+            ).addTo(map_95f9ff089942e4d2a5e4fe6d2ca2f779);
+        
+    
+            var icon_e15cf56f31a6225352494a9f7cb301f0 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_27968065ec343dd55a1f4ac4831b13d2.setIcon(icon_e15cf56f31a6225352494a9f7cb301f0);
+        
+    
+        var popup_3b91fc0646df9cbedc613205b62e9cd7 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_a922e8c03d577fa4c8887b9ccf1b852f = $(`<div id="html_a922e8c03d577fa4c8887b9ccf1b852f" style="width: 100.0%; height: 100.0%;">ISNQE (Retailer)</div>`)[0];
+                popup_3b91fc0646df9cbedc613205b62e9cd7.setContent(html_a922e8c03d577fa4c8887b9ccf1b852f);
+            
+        
+
+        marker_27968065ec343dd55a1f4ac4831b13d2.bindPopup(popup_3b91fc0646df9cbedc613205b62e9cd7)
+        ;
+
+        
+    
+    
+            var marker_f805dab6e91dae977262de9c711a596e = L.marker(
+                [63.2467777, 25.9209164],
+                {}
+            ).addTo(map_95f9ff089942e4d2a5e4fe6d2ca2f779);
+        
+    
+            var icon_4ea03cea1aab386a71398ca4a7b4d7b2 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_f805dab6e91dae977262de9c711a596e.setIcon(icon_4ea03cea1aab386a71398ca4a7b4d7b2);
+        
+    
+        var popup_defaf2e5d450c7cf4d0c77cf8b302ead = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_0f134179abafacbdb5ee29b18cfe0b83 = $(`<div id="html_0f134179abafacbdb5ee29b18cfe0b83" style="width: 100.0%; height: 100.0%;">NAAVF (Retailer)</div>`)[0];
+                popup_defaf2e5d450c7cf4d0c77cf8b302ead.setContent(html_0f134179abafacbdb5ee29b18cfe0b83);
+            
+        
+
+        marker_f805dab6e91dae977262de9c711a596e.bindPopup(popup_defaf2e5d450c7cf4d0c77cf8b302ead)
+        ;
+
+        
+    
+    
+            var marker_cc4ce5c8d6e6c996bcc501e17b5e0711 = L.marker(
+                [48.2242434, 11.6715263],
+                {}
+            ).addTo(map_95f9ff089942e4d2a5e4fe6d2ca2f779);
+        
+    
+            var icon_3b883446f04c73c0d3bc4b2540e34275 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_cc4ce5c8d6e6c996bcc501e17b5e0711.setIcon(icon_3b883446f04c73c0d3bc4b2540e34275);
+        
+    
+        var popup_3d977ae69d4492b6c2e9574c2ea618e3 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_4d9c46997f5818a73a0df1270d1b7c84 = $(`<div id="html_4d9c46997f5818a73a0df1270d1b7c84" style="width: 100.0%; height: 100.0%;">XGUTS (Retailer)</div>`)[0];
+                popup_3d977ae69d4492b6c2e9574c2ea618e3.setContent(html_4d9c46997f5818a73a0df1270d1b7c84);
+            
+        
+
+        marker_cc4ce5c8d6e6c996bcc501e17b5e0711.bindPopup(popup_3d977ae69d4492b6c2e9574c2ea618e3)
+        ;
+
+        
+    
+    
+            var marker_f5f26fc64afbcf472fdbe084a8279589 = L.marker(
+                [45.7479563, -0.338561373],
+                {}
+            ).addTo(map_95f9ff089942e4d2a5e4fe6d2ca2f779);
+        
+    
+            var icon_f95dc0815616285dce7928fd141c638d = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_f5f26fc64afbcf472fdbe084a8279589.setIcon(icon_f95dc0815616285dce7928fd141c638d);
+        
+    
+        var popup_79ec1ebce742f093d3e1de68bdc893cc = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_7f4d1022415641a5e08d7d0b13a812fa = $(`<div id="html_7f4d1022415641a5e08d7d0b13a812fa" style="width: 100.0%; height: 100.0%;">FLDNI (Retailer)</div>`)[0];
+                popup_79ec1ebce742f093d3e1de68bdc893cc.setContent(html_7f4d1022415641a5e08d7d0b13a812fa);
+            
+        
+
+        marker_f5f26fc64afbcf472fdbe084a8279589.bindPopup(popup_79ec1ebce742f093d3e1de68bdc893cc)
+        ;
+
+        
+    
+    
+            var marker_7628189eba6d465850604a41770d357f = L.marker(
+                [37.9839412, 23.7283052],
+                {}
+            ).addTo(map_95f9ff089942e4d2a5e4fe6d2ca2f779);
+        
+    
+            var icon_177c4b76535000f3e2059d1739cf1825 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_7628189eba6d465850604a41770d357f.setIcon(icon_177c4b76535000f3e2059d1739cf1825);
+        
+    
+        var popup_c06b80895bde62b14267ea68a0e99d29 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_1f916a472907c4809ca8321547011974 = $(`<div id="html_1f916a472907c4809ca8321547011974" style="width: 100.0%; height: 100.0%;">TWKZB (Retailer)</div>`)[0];
+                popup_c06b80895bde62b14267ea68a0e99d29.setContent(html_1f916a472907c4809ca8321547011974);
+            
+        
+
+        marker_7628189eba6d465850604a41770d357f.bindPopup(popup_c06b80895bde62b14267ea68a0e99d29)
+        ;
+
+        
+    
+    
+            var marker_427bc4b7d76b7736820394a326960789 = L.marker(
+                [35.77341755, 27.18143074],
+                {}
+            ).addTo(map_95f9ff089942e4d2a5e4fe6d2ca2f779);
+        
+    
+            var icon_6f8ea76c320f0fed4789b6ca7068a46c = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_427bc4b7d76b7736820394a326960789.setIcon(icon_6f8ea76c320f0fed4789b6ca7068a46c);
+        
+    
+        var popup_5888fa8a6b877ecaa99c0881a5664e42 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_ffad5de652bbc3189974bf0427db6b1a = $(`<div id="html_ffad5de652bbc3189974bf0427db6b1a" style="width: 100.0%; height: 100.0%;">VWDRE (Retailer)</div>`)[0];
+                popup_5888fa8a6b877ecaa99c0881a5664e42.setContent(html_ffad5de652bbc3189974bf0427db6b1a);
+            
+        
+
+        marker_427bc4b7d76b7736820394a326960789.bindPopup(popup_5888fa8a6b877ecaa99c0881a5664e42)
+        ;
+
+        
+    
+    
+            var marker_6a76e2e06c45c3dd4331b63d5ac25bca = L.marker(
+                [47.9556915, -1.495366],
+                {}
+            ).addTo(map_95f9ff089942e4d2a5e4fe6d2ca2f779);
+        
+    
+            var icon_374e66b51337e134b73f971c7dcad335 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "blue", "prefix": "glyphicon"}
+            );
+            marker_6a76e2e06c45c3dd4331b63d5ac25bca.setIcon(icon_374e66b51337e134b73f971c7dcad335);
+        
+    
+        var popup_e7bb5e488af929157c0f14d062e037c5 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_1e147342506b31ee77bc5c068c9a95bc = $(`<div id="html_1e147342506b31ee77bc5c068c9a95bc" style="width: 100.0%; height: 100.0%;">FFSVQ (Retailer)</div>`)[0];
+                popup_e7bb5e488af929157c0f14d062e037c5.setContent(html_1e147342506b31ee77bc5c068c9a95bc);
+            
+        
+
+        marker_6a76e2e06c45c3dd4331b63d5ac25bca.bindPopup(popup_e7bb5e488af929157c0f14d062e037c5)
+        ;
+
+        
+    
+    
+            var marker_31a04ed9d056748ec0ae6a26dc23a5b8 = L.marker(
+                [47.4979, 19.0402],
+                {}
+            ).addTo(map_95f9ff089942e4d2a5e4fe6d2ca2f779);
+        
+    
+            var icon_71af6568a1a1f9ec6ab75f575f8e02ea = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "purple", "prefix": "glyphicon"}
+            );
+            marker_31a04ed9d056748ec0ae6a26dc23a5b8.setIcon(icon_71af6568a1a1f9ec6ab75f575f8e02ea);
+        
+    
+        var popup_39e549f949ec4cab3b275236d3b18514 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_36631d5784b9fb7d10ddd88bb729afef = $(`<div id="html_36631d5784b9fb7d10ddd88bb729afef" style="width: 100.0%; height: 100.0%;">Budapest (OptionalSource)</div>`)[0];
+                popup_39e549f949ec4cab3b275236d3b18514.setContent(html_36631d5784b9fb7d10ddd88bb729afef);
+            
+        
+
+        marker_31a04ed9d056748ec0ae6a26dc23a5b8.bindPopup(popup_39e549f949ec4cab3b275236d3b18514)
+        ;
+
+        
+    
+    
+            var marker_e065a5900c4db4b496c8accebb401598 = L.marker(
+                [60.1699, 24.9384],
+                {}
+            ).addTo(map_95f9ff089942e4d2a5e4fe6d2ca2f779);
+        
+    
+            var icon_da5fd63fba436f062232d58f49c56f29 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "purple", "prefix": "glyphicon"}
+            );
+            marker_e065a5900c4db4b496c8accebb401598.setIcon(icon_da5fd63fba436f062232d58f49c56f29);
+        
+    
+        var popup_b61a92b3be01313768b0a3d6ea138579 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_f76b84b58e6733a60c81058f892726f1 = $(`<div id="html_f76b84b58e6733a60c81058f892726f1" style="width: 100.0%; height: 100.0%;">Helsinki (OptionalSource)</div>`)[0];
+                popup_b61a92b3be01313768b0a3d6ea138579.setContent(html_f76b84b58e6733a60c81058f892726f1);
+            
+        
+
+        marker_e065a5900c4db4b496c8accebb401598.bindPopup(popup_b61a92b3be01313768b0a3d6ea138579)
+        ;
+
+        
+    
+    
+            var marker_5292f9d6af11ed5c277436832b565612 = L.marker(
+                [52.2297, 21.0122],
+                {}
+            ).addTo(map_95f9ff089942e4d2a5e4fe6d2ca2f779);
+        
+    
+            var icon_acacc3c5b400fbefa44e8f08389c68f1 = L.AwesomeMarkers.icon(
+                {"extraClasses": "fa-rotate-0", "icon": "info-sign", "iconColor": "white", "markerColor": "purple", "prefix": "glyphicon"}
+            );
+            marker_5292f9d6af11ed5c277436832b565612.setIcon(icon_acacc3c5b400fbefa44e8f08389c68f1);
+        
+    
+        var popup_592e925b4b0350a4f1272926ca92f826 = L.popup({"maxWidth": "100%"});
+
+        
+            
+                var html_f2f6cb3857d767eb567ef51bbad1d494 = $(`<div id="html_f2f6cb3857d767eb567ef51bbad1d494" style="width: 100.0%; height: 100.0%;">Warsaw (OptionalSource)</div>`)[0];
+                popup_592e925b4b0350a4f1272926ca92f826.setContent(html_f2f6cb3857d767eb567ef51bbad1d494);
+            
+        
+
+        marker_5292f9d6af11ed5c277436832b565612.bindPopup(popup_592e925b4b0350a4f1272926ca92f826)
+        ;
+
+        
+    
+    
+            ant_path_4b2da35b43c281eca06f7fa5130c7ee4 = L.polyline.antPath(
+              [[31.2323437, 121.4691024], [54.3617, 18.6514]],
+              {"bubblingMouseEvents": true, "color": "yellow", "dashArray": [10, 20], "dashOffset": null, "delay": 1000, "fill": false, "fillColor": "yellow", "fillOpacity": 0.2, "fillRule": "evenodd", "hardwareAcceleration": false, "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.5, "paused": false, "pulseColor": "#FFFFFF", "reverse": false, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+        ).addTo(map_95f9ff089942e4d2a5e4fe6d2ca2f779);
+        
+    
+            ant_path_4b2da35b43c281eca06f7fa5130c7ee4.bindTooltip(
+                `<div>
+                     Air Route: SHA → PLGDN, 79,500 units
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_6fca873eaaa38ffd1862d069b494cea4 = L.polyline(
+                [[54.362100000000005, 18.651760000000003], [54.329370000000004, 18.6341], [54.30109, 18.60696], [54.278360000000006, 18.59025], [54.26738, 18.60227], [54.24043, 18.608410000000003], [54.18249, 18.641910000000003], [54.12028, 18.685100000000002], [54.09557, 18.691850000000002], [54.070980000000006, 18.67678], [54.002500000000005, 18.65727], [53.9675, 18.65877], [53.93804, 18.641730000000003], [53.869490000000006, 18.62893], [53.817260000000005, 18.628790000000002], [53.742200000000004, 18.631330000000002], [53.66986000000001, 18.63896], [53.637440000000005, 18.64207], [53.60683, 18.624200000000002], [53.572900000000004, 18.605240000000002], [53.54289000000001, 18.609360000000002], [53.52266, 18.60046], [53.493210000000005, 18.615260000000003], [53.46396000000001, 18.616500000000002], [53.424640000000004, 18.50231], [53.40164000000001, 18.355800000000002], [53.37708000000001, 18.343310000000002], [53.356860000000005, 18.30772], [53.3012, 18.24218], [53.22366, 18.129640000000002], [53.22560000000001, 18.06913], [53.217940000000006, 17.995790000000003], [53.21349000000001, 17.936790000000002], [53.19109, 17.88529], [53.173410000000004, 17.876140000000003], [53.15558000000001, 17.88595], [53.10548000000001, 17.88653], [53.092200000000005, 17.89205], [53.076620000000005, 17.84718], [53.055020000000006, 17.80947], [53.021300000000004, 17.769720000000003], [52.962810000000005, 17.721330000000002], [52.931250000000006, 17.69659], [52.8772, 17.70165], [52.839110000000005, 17.691760000000002], [52.813140000000004, 17.69126], [52.75161000000001, 17.660120000000003], [52.71343, 17.66029], [52.670680000000004, 17.649340000000002], [52.643330000000006, 17.614700000000003], [52.624300000000005, 17.617350000000002], [52.60927, 17.62787], [52.59358, 17.61918], [52.567220000000006, 17.565890000000003], [52.54556, 17.53154], [52.508750000000006, 17.47316], [52.45241000000001, 17.37743], [52.40990000000001, 17.2788], [52.37088000000001, 17.21011], [52.32097, 17.13719], [52.32562000000001, 17.103260000000002], [52.350170000000006, 16.94949], [52.35101, 16.849580000000003], [52.34977000000001, 16.71134], [52.360240000000005, 16.61112], [52.38734, 16.52052], [52.386480000000006, 16.40241], [52.37071, 16.212600000000002], [52.359260000000006, 16.102], [52.330310000000004, 15.933110000000001], [52.30747, 15.764030000000002], [52.29684, 15.700830000000002], [52.30483, 15.635470000000002], [52.32385000000001, 15.532110000000001], [52.31692, 15.438930000000001], [52.29802, 15.305500000000002], [52.31031, 15.233910000000002], [52.32593000000001, 15.112720000000001], [52.335080000000005, 14.90252], [52.335420000000006, 14.79155], [52.326530000000005, 14.685020000000002], [52.31504, 14.57182], [52.32036, 14.411520000000001], [52.335330000000006, 14.249490000000002], [52.33612, 14.136740000000001], [52.314280000000004, 13.98174], [52.315560000000005, 13.888800000000002], [52.32186, 13.77021], [52.322750000000006, 13.70498], [52.310810000000004, 13.64423], [52.316140000000004, 13.59487], [52.31645, 13.49294], [52.30780000000001, 13.37166], [52.302040000000005, 13.19752], [52.302710000000005, 13.016490000000001], [52.291090000000004, 12.916900000000002], [52.329330000000006, 12.823690000000001], [52.34015, 12.741410000000002], [52.33666, 12.652650000000001], [52.351240000000004, 12.561620000000001], [52.34263000000001, 12.518460000000001], [52.31801, 12.490240000000002], [52.288630000000005, 12.456840000000001], [52.274910000000006, 12.413770000000001], [52.26274, 12.33539], [52.250040000000006, 12.24727], [52.24161, 12.12621], [52.234080000000006, 11.90999], [52.22925000000001, 11.764890000000001], [52.21589, 11.67303], [52.17934, 11.591000000000001], [52.16581000000001, 11.52711], [52.17287, 11.489130000000001], [52.187990000000006, 11.41294], [52.202110000000005, 11.20129], [52.224630000000005, 11.044110000000002], [52.265280000000004, 10.979550000000001], [52.28538, 10.8977], [52.312090000000005, 10.806130000000001], [52.30843, 10.725230000000002], [52.31338, 10.538300000000001], [52.33540000000001, 10.419260000000001], [52.337430000000005, 10.316], [52.339580000000005, 10.22574], [52.361810000000006, 10.145290000000001], [52.39027, 9.96274], [52.40319, 9.8679], [52.4301, 9.790140000000001], [52.42217, 9.56473], [52.39795, 9.489690000000001], [52.35018, 9.42427], [52.26953, 9.32258], [52.24085, 9.281820000000002], [52.22375, 9.225380000000001], [52.22075, 9.09454], [52.217110000000005, 8.967080000000001], [52.20022, 8.83169], [52.163630000000005, 8.812990000000001], [52.142430000000004, 8.779800000000002], [52.12718, 8.73596], [52.09821, 8.71113], [52.0752, 8.67013], [52.031150000000004, 8.63817], [51.982620000000004, 8.6156], [51.93439000000001, 8.53388], [51.9012, 8.481660000000002], [51.871590000000005, 8.40047], [51.82542, 8.194790000000001], [51.777890000000006, 8.02604], [51.73114, 7.98418], [51.69914000000001, 7.9741100000000005], [51.67672, 7.947760000000001], [51.63598, 7.887220000000001], [51.61637, 7.7781400000000005], [51.59105, 7.608790000000001], [51.57836, 7.5246200000000005], [51.584520000000005, 7.422490000000001], [51.594530000000006, 7.34238], [51.59758000000001, 7.267740000000001], [51.570260000000005, 7.105580000000001], [51.553180000000005, 6.96722], [51.53822, 6.83811], [51.51578000000001, 6.815760000000001], [51.48268, 6.81306], [51.462740000000004, 6.81343], [51.449040000000004, 6.7984800000000005], [51.444140000000004, 6.803160000000001], [51.443220000000004, 6.765210000000001], [51.437340000000006, 6.68587], [51.430580000000006, 6.5709100000000005], [51.40793000000001, 6.41424], [51.38881000000001, 6.33534], [51.382630000000006, 6.254480000000001], [51.396010000000004, 6.16455], [51.393890000000006, 6.07565], [51.37762000000001, 5.9352100000000005], [51.42034, 5.7365200000000005], [51.423790000000004, 5.65599], [51.408060000000006, 5.566280000000001], [51.396750000000004, 5.39242], [51.335950000000004, 5.247850000000001], [51.30626, 5.168570000000001], [51.296670000000006, 5.0783000000000005], [51.292370000000005, 4.8727], [51.26292, 4.815810000000001], [51.24374, 4.745290000000001], [51.227000000000004, 4.653420000000001], [51.200390000000006, 4.585050000000001], [51.21491, 4.45882], [51.191930000000006, 4.425350000000001], [51.206360000000004, 4.37079], [51.21394, 4.3521600000000005], [51.19888, 4.31592], [51.154360000000004, 4.21719], [51.128080000000004, 4.0845400000000005], [51.07761000000001, 3.9998400000000003], [51.063750000000006, 3.87252], [51.037110000000006, 3.7623900000000003], [50.994530000000005, 3.71294], [50.96589, 3.5910100000000003], [50.921490000000006, 3.50159], [50.86560000000001, 3.4264], [50.80330000000001, 3.2594900000000004], [50.741670000000006, 3.13654], [50.70367, 3.1196900000000003], [50.663000000000004, 3.1142100000000004], [50.62704, 3.08305], [50.59702000000001, 3.1030300000000004], [50.5452, 3.0560400000000003], [50.49533, 2.9989500000000002], [50.47659, 2.9797000000000002], [50.43918000000001, 2.97366], [50.40814, 2.9841], [50.383190000000006, 2.97928], [50.34946000000001, 2.9445], [50.334320000000005, 2.9290000000000003]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(map_95f9ff089942e4d2a5e4fe6d2ca2f779);
+        
+    
+            poly_line_6fca873eaaa38ffd1862d069b494cea4.bindTooltip(
+                `<div>
+                     Route: PLGDN → FR6216, 62,000 units
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_bb6c60e38ac5d67052da150c765a26d6 = L.polyline(
+                [[54.362100000000005, 18.651760000000003], [54.35915000000001, 18.644660000000002], [54.350730000000006, 18.645970000000002], [54.329370000000004, 18.6341], [54.31754, 18.62956], [54.30998, 18.61889], [54.30109, 18.60696], [54.278360000000006, 18.59025], [54.26738, 18.60227], [54.25546000000001, 18.610300000000002], [54.24043, 18.608410000000003], [54.206790000000005, 18.61679], [54.18249, 18.641910000000003], [54.12028, 18.685100000000002], [54.09557, 18.691850000000002], [54.08014000000001, 18.68982], [54.070980000000006, 18.67678], [54.037910000000004, 18.67134], [54.002500000000005, 18.65727], [53.9675, 18.65877], [53.93804, 18.641730000000003], [53.918940000000006, 18.6434], [53.89707000000001, 18.637400000000003], [53.869490000000006, 18.62893], [53.817260000000005, 18.628790000000002], [53.77729000000001, 18.630940000000002], [53.742200000000004, 18.631330000000002], [53.70369, 18.62791], [53.66986000000001, 18.63896], [53.637440000000005, 18.64207], [53.60683, 18.624200000000002], [53.572900000000004, 18.605240000000002], [53.54289000000001, 18.609360000000002], [53.52266, 18.60046], [53.493210000000005, 18.615260000000003], [53.46396000000001, 18.616500000000002], [53.424640000000004, 18.50231], [53.41942, 18.42632], [53.40164000000001, 18.355800000000002], [53.37708000000001, 18.343310000000002], [53.356860000000005, 18.30772], [53.31763, 18.27352], [53.3012, 18.24218], [53.27814000000001, 18.203580000000002], [53.25627000000001, 18.181520000000003], [53.228880000000004, 18.14864], [53.22366, 18.129640000000002], [53.21707000000001, 18.11721], [53.22560000000001, 18.06913], [53.217940000000006, 17.995790000000003], [53.21349000000001, 17.936790000000002], [53.19109, 17.88529], [53.173410000000004, 17.876140000000003], [53.15558000000001, 17.88595], [53.13396, 17.879360000000002], [53.10548000000001, 17.88653], [53.092200000000005, 17.89205], [53.076620000000005, 17.84718], [53.06741, 17.814410000000002], [53.055020000000006, 17.80947], [53.021300000000004, 17.769720000000003], [53.00558, 17.76239], [52.985440000000004, 17.7434], [52.962810000000005, 17.721330000000002], [52.931250000000006, 17.69659], [52.8772, 17.70165], [52.839110000000005, 17.691760000000002], [52.82461000000001, 17.69791], [52.813140000000004, 17.69126], [52.80115000000001, 17.678440000000002], [52.783640000000005, 17.674760000000003], [52.75161000000001, 17.660120000000003], [52.71343, 17.66029], [52.695330000000006, 17.66007], [52.670680000000004, 17.649340000000002], [52.65608, 17.63325], [52.643330000000006, 17.614700000000003], [52.624300000000005, 17.617350000000002], [52.60927, 17.62787], [52.59358, 17.61918], [52.574690000000004, 17.596950000000003], [52.567220000000006, 17.565890000000003], [52.54556, 17.53154], [52.5208, 17.505390000000002], [52.508750000000006, 17.47316], [52.484350000000006, 17.42296], [52.45241000000001, 17.37743], [52.40990000000001, 17.2788], [52.39083, 17.25272], [52.37088000000001, 17.21011], [52.32097, 17.13719], [52.32562000000001, 17.103260000000002], [52.350170000000006, 16.94949], [52.35101, 16.849580000000003], [52.346880000000006, 16.75573], [52.30559, 16.6993], [52.29281, 16.68241], [52.28354, 16.672], [52.265390000000004, 16.667920000000002], [52.23781, 16.67498], [52.209680000000006, 16.698], [52.18619, 16.70024], [52.159310000000005, 16.668680000000002], [52.130230000000005, 16.6495], [52.106640000000006, 16.62904], [52.070640000000004, 16.59014], [52.04189, 16.5574], [52.01814, 16.542340000000003], [51.9894, 16.53787], [51.973800000000004, 16.54186], [51.954190000000004, 16.54821], [51.93661, 16.541780000000003], [51.91731000000001, 16.51717], [51.895, 16.514310000000002], [51.869400000000006, 16.51555], [51.85314, 16.51902], [51.842850000000006, 16.51226], [51.83099000000001, 16.50414], [51.819610000000004, 16.509980000000002], [51.810810000000004, 16.55123], [51.805260000000004, 16.58876], [51.811870000000006, 16.58766], [51.78618, 16.550890000000003], [51.77703, 16.535980000000002], [51.75359, 16.52441], [51.74286000000001, 16.52318], [51.73176, 16.5315], [51.70906, 16.521700000000003], [51.682480000000005, 16.524340000000002], [51.669830000000005, 16.51619], [51.657830000000004, 16.51286], [51.645250000000004, 16.50177], [51.630860000000006, 16.45767], [51.62285000000001, 16.435170000000003], [51.61063000000001, 16.41597], [51.587320000000005, 16.425250000000002], [51.56815, 16.42058], [51.552530000000004, 16.397370000000002], [51.543490000000006, 16.34542], [51.53107000000001, 16.29194], [51.51428000000001, 16.26557], [51.511480000000006, 16.24266], [51.491760000000006, 16.223000000000003], [51.476850000000006, 16.21065], [51.46638, 16.208180000000002], [51.440720000000006, 16.175240000000002], [51.43104, 16.1678], [51.437870000000004, 16.153940000000002], [51.44052000000001, 16.14262], [51.41351, 16.1598], [51.40008, 16.15257], [51.37621000000001, 16.173440000000003], [51.356170000000006, 16.17639], [51.3359, 16.16495], [51.286930000000005, 16.151880000000002], [51.24488, 16.147370000000002], [51.22288, 16.136960000000002], [51.20027, 16.11286], [51.19315, 16.094340000000003], [51.181650000000005, 16.08691], [51.15746000000001, 16.1021], [51.13622, 16.08723], [51.121340000000004, 16.11316], [51.08843, 16.182820000000003], [51.066790000000005, 16.221220000000002], [51.052820000000004, 16.232380000000003], [51.03755, 16.22858], [51.02447, 16.20862], [51.012510000000006, 16.189870000000003], [50.991910000000004, 16.19188], [50.977340000000005, 16.19939], [50.95324, 16.18976], [50.91335, 16.153830000000003], [50.88552000000001, 16.16299], [50.85763000000001, 16.15851], [50.842580000000005, 16.13111], [50.834520000000005, 16.107750000000003], [50.80033, 16.06895], [50.7961, 16.034950000000002], [50.786910000000006, 16.00496], [50.76279, 15.999760000000002], [50.74548000000001, 16.00824], [50.730650000000004, 16.0041], [50.71249, 15.983130000000001], [50.708040000000004, 15.98206], [50.70461, 15.998940000000001], [50.68092000000001, 15.97727], [50.661260000000006, 15.96746], [50.64518, 15.964910000000001], [50.632740000000005, 15.95888], [50.623360000000005, 15.94912], [50.610850000000006, 15.95133], [50.579980000000006, 15.945190000000002], [50.56232000000001, 15.917580000000001], [50.5583, 15.902220000000002], [50.54341, 15.913160000000001], [50.520520000000005, 15.915640000000002], [50.50263, 15.898880000000002], [50.483740000000004, 15.87667], [50.461920000000006, 15.861960000000002], [50.44782000000001, 15.857030000000002], [50.435430000000004, 15.866360000000002], [50.41525000000001, 15.884210000000001], [50.385220000000004, 15.911120000000002], [50.375510000000006, 15.914930000000002], [50.377190000000006, 15.903290000000002], [50.35078000000001, 15.885610000000002], [50.29614, 15.83754], [50.264880000000005, 15.807330000000002], [50.233340000000005, 15.771920000000001], [50.19024, 15.76199], [50.17656, 15.76293], [50.160250000000005, 15.751280000000001], [50.15041, 15.736110000000002], [50.139140000000005, 15.787640000000001], [50.1176, 15.78883], [50.10163000000001, 15.767900000000001], [50.08536, 15.75172], [50.054390000000005, 15.744790000000002], [50.03336, 15.750190000000002], [50.03152000000001, 15.78443], [50.02901000000001, 15.808980000000002]],
+                {"bubblingMouseEvents": true, "color": "green", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "green", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(map_95f9ff089942e4d2a5e4fe6d2ca2f779);
+        
+    
+            poly_line_bb6c60e38ac5d67052da150c765a26d6.bindTooltip(
+                `<div>
+                     Route: PLGDN → PED, 17,500 units
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_0d4895f4599e0ed15ecf1efaab3f42c2 = L.polyline(
+                [[60.169900000000005, 24.938390000000002], [60.159200000000006, 24.921460000000003], [60.156710000000004, 24.922490000000003], [60.15485, 24.92227], [60.1392, 24.908540000000002], [59.83240000000001, 24.849020000000003], [59.691410000000005, 24.752570000000002], [59.60101, 24.68652], [59.44456, 24.76816], [59.44357000000001, 24.76988], [59.445930000000004, 24.77633], [59.442350000000005, 24.77446], [59.42099, 24.742150000000002], [59.39369000000001, 24.724120000000003], [59.34922, 24.62627], [59.273610000000005, 24.521160000000002], [59.2173, 24.495050000000003], [59.150650000000006, 24.503470000000004], [59.081570000000006, 24.45729], [58.918910000000004, 24.4572], [58.770790000000005, 24.416150000000002], [58.698570000000004, 24.42914], [58.6304, 24.50202], [58.55760000000001, 24.5252], [58.52335000000001, 24.55946], [58.47903, 24.527890000000003], [58.43126, 24.500090000000004], [58.408710000000006, 24.495540000000002], [58.321870000000004, 24.59851], [58.289320000000004, 24.590190000000003], [58.246770000000005, 24.517200000000003], [58.19776, 24.487190000000002], [58.13683, 24.50947], [58.066990000000004, 24.511370000000003], [57.968340000000005, 24.448970000000003], [57.83050000000001, 24.344220000000004], [57.721360000000004, 24.36313], [57.650690000000004, 24.375220000000002], [57.58012000000001, 24.430000000000003], [57.462790000000005, 24.433960000000003], [57.3389, 24.44985], [57.24813, 24.42781], [57.15820000000001, 24.346280000000004], [57.05154, 24.31884], [56.98489000000001, 24.32184], [56.90222000000001, 24.4065], [56.849320000000006, 24.39824], [56.85972, 24.313560000000003], [56.8498, 24.26836], [56.813120000000005, 24.26283], [56.753190000000004, 24.24821], [56.62194, 24.21911], [56.51581, 24.17294], [56.41013, 24.184810000000002], [56.33728000000001, 24.29532], [56.25023, 24.39798], [56.115010000000005, 24.46947], [56.013670000000005, 24.356910000000003], [55.92573, 24.33517], [55.819880000000005, 24.36739], [55.743550000000006, 24.276980000000002], [55.69021000000001, 24.278170000000003], [55.66785, 24.35377], [55.519330000000004, 24.31258], [55.34347, 24.145310000000002], [55.28199000000001, 24.067410000000002], [55.20937000000001, 24.024520000000003], [55.07101, 23.882710000000003], [55.04307000000001, 23.82176], [54.958670000000005, 23.86577], [54.883880000000005, 23.81876], [54.81073000000001, 23.85864], [54.77713000000001, 23.775900000000004], [54.702920000000006, 23.618380000000002], [54.633770000000005, 23.436280000000004], [54.582460000000005, 23.335790000000003], [54.510540000000006, 23.235360000000004], [54.39932, 23.21129], [54.27662, 23.109800000000003], [54.13487000000001, 22.960780000000003], [54.13103, 22.89132], [54.091350000000006, 22.869400000000002], [54.03707000000001, 22.891000000000002], [53.987640000000006, 22.804550000000003], [53.92550000000001, 22.751360000000002], [53.86732000000001, 22.623780000000004], [53.84864, 22.461830000000003], [53.80809000000001, 22.39486], [53.7415, 22.296750000000003], [53.64634, 22.29399], [53.611320000000006, 22.319010000000002], [53.575790000000005, 22.31089], [53.55185, 22.26225], [53.51503, 22.252390000000002], [53.439370000000004, 22.17641], [53.398500000000006, 22.15546], [53.358650000000004, 22.160570000000003], [53.28746, 22.143140000000002], [53.236000000000004, 22.080080000000002], [53.19621000000001, 21.988180000000003], [53.13929, 22.00215], [53.103820000000006, 22.01998], [53.04945000000001, 21.959100000000003], [52.92739, 21.89214], [52.86674000000001, 21.868100000000002], [52.840830000000004, 21.90078], [52.81828, 21.88744], [52.78815, 21.86436], [52.729040000000005, 21.730610000000002], [52.665760000000006, 21.591430000000003], [52.639630000000004, 21.533160000000002], [52.590250000000005, 21.498700000000003], [52.51133, 21.394650000000002], [52.43773, 21.236800000000002], [52.35669000000001, 21.180970000000002], [52.319320000000005, 21.139380000000003], [52.30246, 21.04315], [52.25242, 20.943620000000003], [52.192820000000005, 20.80964], [52.13147000000001, 20.54897], [52.07271, 20.29154], [52.019380000000005, 19.98111], [51.923480000000005, 19.775530000000003], [51.88890000000001, 19.58389], [51.956140000000005, 19.13636], [52.038000000000004, 18.87002], [52.138290000000005, 18.621850000000002], [52.140330000000006, 18.350430000000003], [52.17018, 18.165100000000002], [52.21656, 17.970280000000002], [52.30528, 17.605710000000002], [52.3076, 17.17012], [52.350590000000004, 16.74014], [52.386590000000005, 16.488950000000003], [52.377810000000004, 16.27759], [52.33639, 15.97112], [52.298640000000006, 15.661140000000001], [52.31662000000001, 15.46015], [52.307010000000005, 15.2498], [52.32782, 15.044680000000001], [52.32639, 14.634970000000001], [52.329860000000004, 14.266290000000001], [52.31244, 13.66027], [52.302640000000004, 12.891700000000002], [52.34035, 12.71794], [52.34662, 12.52988], [52.27181, 12.391290000000001], [52.251940000000005, 12.2077], [52.22686, 11.80704], [52.199720000000006, 11.644670000000001], [52.179860000000005, 11.46812], [52.215520000000005, 11.089490000000001], [52.313660000000006, 10.77424], [52.33905000000001, 10.37833], [52.38608000000001, 10.00535], [52.41794, 9.83913], [52.42172000000001, 9.63549], [52.38195, 9.46724], [52.288900000000005, 9.35804], [52.23463, 9.261660000000001], [52.22057, 9.13212], [52.21128, 8.86588], [52.15278000000001, 8.806410000000001], [52.11506000000001, 8.736830000000001], [52.058130000000006, 8.65909], [51.96491, 8.595460000000001], [51.89316, 8.450990000000001], [51.835170000000005, 8.262490000000001], [51.79634, 8.08694], [51.76608, 8.00519], [51.707980000000006, 7.978490000000001], [51.62498, 7.8472100000000005], [51.600620000000006, 7.6599200000000005], [51.578030000000005, 7.492240000000001], [51.60398000000001, 7.317330000000001], [51.55866, 7.0151200000000005], [51.54260000000001, 6.89655], [51.53126, 6.82171], [51.50468000000001, 6.822780000000001], [51.44232, 6.805460000000001], [51.43589000000001, 6.635860000000001], [51.389610000000005, 6.3047200000000005], [51.39347, 6.12105], [51.37798, 5.99481], [51.419810000000005, 5.60761], [51.357710000000004, 5.288500000000001], [51.29797000000001, 5.131670000000001], [51.29842000000001, 4.95955], [51.21513, 4.632750000000001], [51.21618, 4.44831], [51.193250000000006, 4.39987], [51.213890000000006, 4.35794], [51.1452, 4.189830000000001], [51.07309000000001, 3.9558000000000004], [51.02394, 3.73545], [50.98404000000001, 3.67804], [50.949780000000004, 3.5529], [50.84049, 3.34925], [50.758010000000006, 3.1517800000000005], [50.61856, 3.0807], [50.5769, 3.08415], [50.51831000000001, 3.03737], [50.482470000000006, 2.98254], [50.41761, 2.9852200000000004], [50.33513000000001, 2.9224300000000003], [50.334320000000005, 2.9290000000000003]],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(map_95f9ff089942e4d2a5e4fe6d2ca2f779);
+        
+    
+            poly_line_0d4895f4599e0ed15ecf1efaab3f42c2.bindTooltip(
+                `<div>
+                     Route: FIMPF → FR6216, 15,000 units
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_f2c705fd051bd79c7e776630646de7d0 = L.polyline(
+                [[60.169900000000005, 24.938390000000002], [60.16648000000001, 24.93042], [60.1664, 24.93045], [60.16461, 24.930200000000003], [60.162710000000004, 24.92471], [60.161680000000004, 24.9217], [60.159200000000006, 24.921460000000003], [60.156710000000004, 24.922490000000003], [60.15485, 24.92227], [60.1392, 24.908540000000002], [60.071560000000005, 24.90295], [59.83240000000001, 24.849020000000003], [59.80248, 24.83886], [59.718720000000005, 24.7785], [59.691410000000005, 24.752570000000002], [59.61867, 24.68616], [59.610350000000004, 24.683770000000003], [59.60101, 24.68652], [59.49915000000001, 24.75919], [59.45758000000001, 24.777970000000003], [59.450250000000004, 24.778200000000002], [59.44456, 24.76816], [59.443960000000004, 24.767860000000002], [59.44357000000001, 24.76988], [59.44398, 24.773010000000003], [59.445930000000004, 24.77633], [59.44474, 24.779390000000003], [59.44395000000001, 24.781090000000003], [59.442350000000005, 24.77446], [59.440490000000004, 24.76547], [59.43954000000001, 24.763560000000002], [59.437490000000004, 24.76452], [59.4337, 24.76368], [59.43101000000001, 24.76047], [59.427440000000004, 24.74426], [59.42521000000001, 24.742490000000004], [59.42099, 24.742150000000002], [59.41715000000001, 24.740430000000003], [59.409310000000005, 24.73571], [59.39369000000001, 24.724120000000003], [59.38792000000001, 24.717440000000003], [59.381620000000005, 24.701670000000004], [59.37165, 24.661250000000003], [59.36368, 24.632130000000004], [59.360380000000006, 24.629880000000004], [59.357060000000004, 24.630640000000003], [59.34922, 24.62627], [59.31752, 24.581080000000004], [59.305170000000004, 24.56323], [59.273610000000005, 24.521160000000002], [59.252280000000006, 24.50034], [59.241780000000006, 24.492800000000003], [59.23483, 24.491860000000003], [59.2173, 24.495050000000003], [59.17940000000001, 24.50148], [59.165150000000004, 24.503870000000003], [59.150650000000006, 24.503470000000004], [59.14078000000001, 24.490190000000002], [59.131220000000006, 24.480010000000004], [59.11475000000001, 24.475450000000002], [59.09798000000001, 24.46826], [59.081570000000006, 24.45729], [59.06311, 24.449230000000004], [59.05239, 24.445480000000003], [59.04211000000001, 24.44318], [59.030910000000006, 24.44469], [58.998400000000004, 24.462960000000002], [58.971720000000005, 24.475790000000003], [58.96338000000001, 24.477210000000003], [58.947990000000004, 24.467630000000003], [58.9271, 24.460680000000004], [58.918910000000004, 24.4572], [58.897890000000004, 24.455550000000002], [58.885560000000005, 24.451500000000003], [58.841640000000005, 24.42463], [58.81967, 24.412910000000004], [58.80794, 24.412650000000003], [58.78716000000001, 24.413120000000003], [58.770790000000005, 24.416150000000002], [58.75766, 24.42291], [58.73955, 24.423370000000002], [58.70729000000001, 24.424190000000003], [58.698570000000004, 24.42914], [58.68488000000001, 24.44141], [58.67634, 24.44236], [58.67100000000001, 24.44919], [58.65849000000001, 24.47146], [58.6304, 24.50202], [58.61659, 24.512240000000002], [58.59882, 24.512210000000003], [58.58326, 24.512300000000003], [58.569430000000004, 24.51328], [58.564060000000005, 24.515950000000004], [58.55760000000001, 24.5252], [58.55134, 24.533310000000004], [58.53264000000001, 24.551990000000004], [58.52335000000001, 24.55946], [58.51693, 24.55592], [58.49712, 24.534840000000003], [58.488580000000006, 24.52887], [58.47903, 24.527890000000003], [58.4733, 24.52653], [58.460750000000004, 24.51556], [58.44670000000001, 24.498970000000003], [58.44438, 24.49781], [58.43867, 24.499620000000004], [58.43126, 24.500090000000004], [58.42231, 24.49498], [58.414410000000004, 24.494030000000002], [58.410700000000006, 24.493570000000002], [58.408710000000006, 24.495540000000002], [58.405010000000004, 24.50033], [58.398950000000006, 24.51641], [58.38716, 24.55505], [58.38306000000001, 24.556430000000002], [58.37941000000001, 24.555850000000003], [58.376160000000006, 24.554710000000004], [58.37172, 24.55561], [58.36381000000001, 24.56193], [58.36066, 24.568130000000004], [58.35551, 24.576290000000004], [58.338710000000006, 24.59074], [58.321870000000004, 24.59851], [58.30839, 24.606250000000003], [58.29945000000001, 24.60581], [58.29283, 24.59899], [58.289320000000004, 24.590190000000003], [58.284130000000005, 24.577140000000004], [58.270430000000005, 24.555840000000003], [58.25822, 24.539530000000003], [58.246770000000005, 24.517200000000003], [58.236810000000006, 24.508090000000003], [58.22708000000001, 24.495880000000003], [58.21748, 24.487720000000003], [58.20863000000001, 24.48524], [58.19776, 24.487190000000002], [58.172520000000006, 24.49472], [58.15632000000001, 24.49858], [58.14837000000001, 24.501030000000004], [58.143350000000005, 24.506010000000003], [58.13683, 24.50947], [58.13197, 24.512880000000003], [58.119200000000006, 24.51086], [58.08921, 24.50804], [58.066990000000004, 24.511370000000003], [58.038810000000005, 24.50759], [58.02908000000001, 24.503770000000003], [58.01446000000001, 24.49417], [57.99027, 24.46873], [57.968340000000005, 24.448970000000003], [57.95093000000001, 24.437350000000002], [57.91809000000001, 24.42171], [57.904520000000005, 24.4143], [57.894040000000004, 24.404380000000003], [57.87574000000001, 24.382230000000003], [57.853120000000004, 24.360300000000002], [57.848130000000005, 24.352480000000003], [57.842560000000006, 24.349310000000003], [57.83050000000001, 24.344220000000004], [57.801280000000006, 24.349580000000003], [57.790020000000005, 24.3535], [57.77629, 24.355010000000004], [57.767540000000004, 24.35594], [57.758480000000006, 24.360400000000002], [57.75567, 24.36164], [57.75323, 24.35904], [57.74954, 24.35837], [57.74228000000001, 24.360680000000002], [57.73263000000001, 24.367500000000003], [57.721360000000004, 24.36313], [57.70808, 24.36833], [57.6884, 24.38107], [57.673010000000005, 24.383470000000003], [57.650690000000004, 24.375220000000002], [57.63557, 24.377940000000002], [57.61704, 24.39207], [57.58012000000001, 24.430000000000003], [57.576100000000004, 24.43363], [57.569750000000006, 24.434350000000002], [57.55697000000001, 24.43333], [57.515600000000006, 24.430740000000004], [57.48615, 24.432440000000003], [57.47225, 24.434440000000002], [57.462790000000005, 24.433960000000003], [57.44341000000001, 24.429630000000003], [57.428160000000005, 24.42941], [57.41765, 24.428880000000003], [57.41133000000001, 24.431630000000002], [57.39969000000001, 24.428420000000003], [57.387950000000004, 24.42894], [57.37554000000001, 24.43344], [57.34852000000001, 24.439400000000003], [57.3389, 24.44985], [57.33086, 24.457320000000003], [57.31550000000001, 24.447490000000002], [57.283550000000005, 24.43315], [57.27409000000001, 24.436880000000002], [57.267160000000004, 24.436580000000003], [57.258770000000005, 24.43007], [57.24813, 24.42781], [57.234750000000005, 24.426660000000002], [57.226580000000006, 24.417800000000003], [57.19605000000001, 24.36679], [57.18777000000001, 24.34627], [57.17857000000001, 24.34184], [57.15820000000001, 24.346280000000004], [57.137570000000004, 24.335620000000002], [57.125690000000006, 24.328470000000003], [57.11835000000001, 24.324520000000003], [57.10557000000001, 24.31502], [57.094820000000006, 24.3118], [57.07992, 24.31631], [57.063520000000004, 24.3214], [57.05154, 24.31884], [57.04390000000001, 24.31559], [57.03571, 24.31774], [57.02875, 24.320610000000002], [57.02100000000001, 24.314680000000003], [57.01164000000001, 24.306410000000003], [57.00679, 24.29754], [57.000510000000006, 24.27792], [56.990840000000006, 24.2464], [56.987100000000005, 24.22199], [56.977830000000004, 24.18173], [56.968210000000006, 24.150730000000003], [56.966820000000006, 24.14757], [56.96405000000001, 24.150350000000003], [56.95817, 24.152400000000004], [56.95374, 24.153640000000003], [56.951710000000006, 24.150240000000004], [56.947, 24.14253], [56.94718, 24.136400000000002], [56.94558000000001, 24.1336], [56.938930000000006, 24.129080000000002], [56.92587, 24.108800000000002], [56.920100000000005, 24.097620000000003], [56.919520000000006, 24.08452], [56.92315000000001, 24.074990000000003], [56.921730000000004, 24.077520000000003], [56.91610000000001, 24.071630000000003], [56.91102000000001, 24.063860000000002], [56.90073, 24.04757], [56.900510000000004, 24.04735], [56.89600000000001, 24.045840000000002]],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(map_95f9ff089942e4d2a5e4fe6d2ca2f779);
+        
+    
+            poly_line_f2c705fd051bd79c7e776630646de7d0.bindTooltip(
+                `<div>
+                     Route: FIMPF → RIX, 45,000 units
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_e970c0cf23392a128d48e824ec19d1e0 = L.polyline(
+                [[47.49814000000001, 19.04042], [47.46842, 19.06437], [47.47126, 19.092550000000003], [47.452110000000005, 19.11822], [47.34593, 19.209480000000003], [47.29453, 19.296280000000003], [47.201420000000006, 19.419880000000003], [47.03992, 19.56725], [46.99335000000001, 19.60856], [46.95910000000001, 19.618540000000003], [46.90006, 19.61806], [46.83695, 19.68796], [46.766090000000005, 19.764840000000003], [46.688010000000006, 19.814020000000003], [46.61941, 19.835310000000003], [46.53833, 19.887510000000002], [46.35622, 20.004730000000002], [46.31497, 20.038890000000002], [46.2498, 20.03716], [46.19384, 20.00028], [46.172430000000006, 19.97483], [46.13579000000001, 19.88558], [46.117940000000004, 19.80537], [46.02147, 19.73402], [45.96334, 19.710900000000002], [45.87547000000001, 19.70005], [45.79572, 19.692980000000002], [45.72858, 19.70595], [45.65287000000001, 19.721870000000003], [45.61066, 19.706470000000003], [45.55782000000001, 19.71995], [45.48725, 19.728730000000002], [45.346180000000004, 19.762240000000002], [45.314150000000005, 19.79804], [45.306610000000006, 19.84146], [45.27671, 19.91945], [45.235240000000005, 20.045180000000002], [45.202420000000004, 20.071900000000003], [45.12801, 20.09129], [45.00885, 20.19997], [44.92792, 20.300600000000003], [44.88718, 20.28826], [44.844240000000006, 20.249650000000003], [44.772270000000006, 20.273100000000003], [44.726330000000004, 20.354080000000003], [44.709970000000006, 20.3733], [44.71535, 20.401510000000002], [44.720490000000005, 20.457880000000003], [44.715770000000006, 20.51497], [44.70387, 20.57503], [44.67304, 20.60347], [44.635360000000006, 20.63622], [44.58382, 20.64279], [44.566010000000006, 20.6706], [44.57025, 20.71479], [44.58314, 20.81201], [44.57251, 20.91732], [44.58382, 20.96959], [44.5489, 20.98562], [44.501670000000004, 21.023200000000003], [44.441430000000004, 21.04934], [44.3188, 21.091920000000002], [44.244690000000006, 21.11642], [44.21148, 21.105970000000003], [44.149890000000006, 21.11402], [44.080650000000006, 21.18765], [44.04397, 21.243450000000003], [43.99913, 21.270850000000003], [43.96797, 21.309150000000002], [43.94091, 21.3866], [43.879430000000006, 21.40369], [43.8669, 21.433010000000003], [43.81204, 21.427580000000003], [43.76191, 21.43825], [43.74011, 21.49267], [43.73214, 21.51967], [43.70590000000001, 21.53648], [43.670260000000006, 21.54633], [43.62556, 21.56738], [43.5974, 21.63643], [43.5313, 21.70022], [43.48931, 21.76565], [43.457710000000006, 21.78875], [43.42367, 21.79634], [43.354330000000004, 21.82487], [43.306180000000005, 21.79936], [43.248110000000004, 21.81661], [43.19102, 21.856610000000003], [43.047540000000005, 21.985470000000003], [42.985780000000005, 22.028440000000003], [42.92284, 22.03048], [42.873810000000006, 22.0895], [42.84310000000001, 22.131300000000003], [42.76344, 22.08614], [42.64631000000001, 22.0558], [42.598890000000004, 22.021800000000002], [42.567620000000005, 21.969050000000003], [42.503530000000005, 21.875870000000003], [42.43142, 21.74396], [42.389610000000005, 21.720740000000003], [42.34046, 21.72117], [42.19917, 21.703120000000002], [42.13929, 21.702800000000003], [42.11025, 21.69875], [42.02324, 21.674380000000003], [41.97039, 21.645740000000004], [41.95046000000001, 21.63079], [41.922050000000006, 21.63532], [41.88599000000001, 21.68708], [41.864450000000005, 21.695030000000003], [41.840540000000004, 21.701770000000003], [41.817040000000006, 21.67499], [41.78468, 21.70549], [41.78313, 21.738380000000003], [41.759, 21.740810000000003], [41.721450000000004, 21.80639], [41.66057, 21.8348], [41.61927, 21.90614], [41.573510000000006, 21.93597], [41.549440000000004, 21.977030000000003], [41.546330000000005, 22.03696], [41.51312, 22.083740000000002], [41.476620000000004, 22.10931], [41.44834, 22.177310000000002], [41.41864, 22.19489], [41.394540000000006, 22.292650000000002], [41.352830000000004, 22.36006], [41.300760000000004, 22.428400000000003], [41.26097, 22.47247], [41.2068, 22.49518], [41.1601, 22.50691], [41.14251, 22.53273], [41.12371, 22.551430000000003], [41.0944, 22.57515], [41.028150000000004, 22.60809], [40.98662, 22.604480000000002], [40.95192, 22.63569], [40.85058, 22.66701], [40.68976000000001, 22.71976], [40.608920000000005, 22.728730000000002], [40.57883, 22.634400000000003], [40.522090000000006, 22.573310000000003], [40.45053, 22.580550000000002], [40.367700000000006, 22.60499], [40.294250000000005, 22.54042], [40.269310000000004, 22.52408], [40.23321000000001, 22.53787], [40.14923, 22.540960000000002], [40.06669, 22.554750000000002], [40.0054, 22.583280000000002], [39.968050000000005, 22.64147], [39.93525, 22.645090000000003], [39.89799, 22.616600000000002], [39.873760000000004, 22.56303], [39.84998, 22.51967], [39.770500000000006, 22.484050000000003], [39.730520000000006, 22.478630000000003], [39.68862, 22.491850000000003], [39.65068, 22.50804], [39.61047000000001, 22.500470000000004], [39.57434000000001, 22.483790000000003], [39.543260000000004, 22.512310000000003], [39.49569, 22.596700000000002], [39.48413, 22.642940000000003], [39.45347, 22.677580000000003], [39.40203, 22.748330000000003], [39.34555, 22.781200000000002], [39.28817, 22.744200000000003], [39.25357, 22.73543], [39.2207, 22.748730000000002], [39.1589, 22.807070000000003], [39.09593, 22.86946], [39.02673, 22.91177], [38.97321, 22.88887], [38.917840000000005, 22.842940000000002], [38.891690000000004, 22.832430000000002], [38.8894, 22.794120000000003], [38.90205, 22.69809], [38.92286, 22.640860000000004], [38.91669, 22.596870000000003], [38.89810000000001, 22.497580000000003], [38.87552, 22.46158], [38.834, 22.480500000000003], [38.80049, 22.506490000000003], [38.80283, 22.55073], [38.80729, 22.6368], [38.77913, 22.722], [38.76626, 22.83331], [38.747800000000005, 22.85959], [38.75564, 22.893410000000003], [38.74382000000001, 22.983120000000003], [38.739140000000006, 23.03161], [38.708220000000004, 23.055880000000002], [38.63338, 23.089650000000002], [38.6176, 23.1794], [38.595270000000006, 23.19376], [38.566970000000005, 23.19121], [38.54052, 23.169410000000003], [38.50086, 23.163890000000002], [38.459010000000006, 23.164160000000003], [38.448570000000004, 23.210350000000002], [38.437360000000005, 23.23045], [38.42291, 23.222080000000002], [38.39721, 23.230290000000004], [38.366240000000005, 23.30637], [38.373430000000006, 23.41684], [38.373400000000004, 23.51688], [38.331830000000004, 23.602010000000003], [38.246930000000006, 23.76726], [38.22355, 23.851010000000002], [38.149860000000004, 23.85208], [38.09066, 23.790390000000002], [38.0664, 23.754220000000004], [38.052980000000005, 23.77888], [38.044000000000004, 23.799000000000003]],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(map_95f9ff089942e4d2a5e4fe6d2ca2f779);
+        
+    
+            poly_line_e970c0cf23392a128d48e824ec19d1e0.bindTooltip(
+                `<div>
+                     Route: HUDTG → GMZ, 50,000 units
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_bf967505ff92d7f3dbd8047e6744899b = L.polyline(
+                [[52.2297, 21.012240000000002], [52.22227, 20.979290000000002], [52.20347, 20.93933], [52.192460000000004, 20.92293], [52.178380000000004, 20.91401], [52.174890000000005, 20.907580000000003], [52.17853, 20.89028], [52.18750000000001, 20.86746], [52.197050000000004, 20.85197], [52.20033, 20.84139], [52.19532, 20.82328], [52.18704, 20.776490000000003], [52.177730000000004, 20.76807], [52.16667, 20.74023], [52.15222000000001, 20.66618], [52.13879000000001, 20.579700000000003], [52.102070000000005, 20.428030000000003], [52.08757000000001, 20.359340000000003], [52.07341, 20.308020000000003], [52.07522, 20.23327], [52.05848, 20.14545], [52.04111, 20.03759], [52.02324, 19.99296], [52.00596, 19.95051], [51.989180000000005, 19.89862], [51.97729, 19.878770000000003], [51.95188, 19.84082], [51.92943, 19.79399], [51.90851000000001, 19.74001], [51.89694, 19.68411], [51.89231, 19.63757], [51.89222, 19.631390000000003], [51.88633, 19.63926], [51.857670000000006, 19.65905], [51.84217, 19.65903], [51.82446, 19.64956], [51.80097000000001, 19.62264], [51.77698, 19.60525], [51.76462, 19.59654], [51.74799, 19.596760000000003], [51.728280000000005, 19.605320000000003], [51.707480000000004, 19.606070000000003], [51.665020000000005, 19.58445], [51.64256, 19.572460000000003], [51.64249, 19.54294], [51.64119, 19.50797], [51.634890000000006, 19.477310000000003], [51.63004, 19.409460000000003], [51.61627000000001, 19.372680000000003], [51.60788, 19.32137], [51.58854, 19.206970000000002], [51.567150000000005, 19.160300000000003], [51.555330000000005, 19.107740000000003], [51.553520000000006, 19.084300000000002], [51.558930000000004, 19.05189], [51.5596, 19.011280000000003], [51.585100000000004, 18.89994], [51.59686000000001, 18.87704], [51.595870000000005, 18.84054], [51.58953, 18.811960000000003], [51.57466, 18.790650000000003], [51.563030000000005, 18.760340000000003], [51.553110000000004, 18.710420000000003], [51.533820000000006, 18.6961], [51.50768000000001, 18.691640000000003], [51.486110000000004, 18.67753], [51.46998000000001, 18.663300000000003], [51.44771, 18.646160000000002], [51.42705, 18.64562], [51.41163, 18.637800000000002], [51.396240000000006, 18.60406], [51.38626000000001, 18.56061], [51.37491000000001, 18.54425], [51.346230000000006, 18.506680000000003], [51.32757, 18.44376], [51.315630000000006, 18.41639], [51.315200000000004, 18.398770000000003], [51.318160000000006, 18.36202], [51.323640000000005, 18.32129], [51.32056000000001, 18.29822], [51.30774, 18.226830000000003], [51.30586, 18.19623], [51.31275, 18.173340000000003], [51.327560000000005, 18.15153], [51.33729, 18.12854], [51.337140000000005, 18.10726], [51.330420000000004, 18.088040000000003], [51.31973000000001, 18.05648], [51.31772, 18.0362], [51.31689, 17.99427], [51.31570000000001, 17.96469], [51.305060000000005, 17.91655], [51.299890000000005, 17.88829], [51.29916000000001, 17.86334], [51.296290000000006, 17.81846], [51.30388000000001, 17.78462], [51.294700000000006, 17.7328], [51.29983000000001, 17.65053], [51.3055, 17.6197], [51.301140000000004, 17.59118], [51.269400000000005, 17.553320000000003], [51.25535000000001, 17.536070000000002], [51.24378, 17.50804], [51.22874, 17.46617], [51.22688, 17.44103], [51.2344, 17.39984], [51.22189, 17.325110000000002], [51.22966, 17.2466], [51.22552, 17.189960000000003], [51.21947, 17.144190000000002], [51.205020000000005, 17.12374], [51.18019, 17.09664], [51.168820000000004, 17.07103], [51.16743, 17.047600000000003], [51.16655, 16.981810000000003], [51.15567, 16.95756], [51.142810000000004, 16.94058], [51.13318, 16.93506], [51.098310000000005, 16.93279], [51.07855000000001, 16.927300000000002], [51.049640000000004, 16.93319], [51.04402, 16.929570000000002], [51.04113, 16.918590000000002], [51.036910000000006, 16.881780000000003], [51.03510000000001, 16.811600000000002], [51.024190000000004, 16.7814], [51.01957, 16.72012], [51.02469000000001, 16.672800000000002], [51.04775, 16.574930000000002], [51.064260000000004, 16.499010000000002], [51.0793, 16.438950000000002], [51.087740000000004, 16.420620000000003], [51.08039, 16.413490000000003], [51.074400000000004, 16.409940000000002], [51.06797, 16.4023], [51.06743, 16.38101], [51.06100000000001, 16.32264], [51.05948, 16.30411], [51.05937, 16.29427], [51.055440000000004, 16.28661], [51.043580000000006, 16.27738], [51.0412, 16.23872], [51.04254, 16.22839], [51.037940000000006, 16.22062], [51.03495, 16.225900000000003], [51.028330000000004, 16.21788], [51.01928, 16.1945], [51.00019, 16.18859], [50.98281, 16.19798], [50.95996, 16.19337], [50.94006, 16.180500000000002], [50.921510000000005, 16.15576], [50.911500000000004, 16.1541], [50.89424, 16.160230000000002], [50.88139, 16.161350000000002], [50.869460000000004, 16.158540000000002], [50.85492000000001, 16.15701], [50.84564, 16.14311], [50.83851000000001, 16.11606], [50.825320000000005, 16.095660000000002], [50.80487, 16.07532], [50.79641, 16.048280000000002], [50.79327000000001, 16.014780000000002], [50.78531, 16.00366], [50.772310000000004, 15.997140000000002], [50.74221000000001, 16.00825], [50.727090000000004, 16.00137], [50.713930000000005, 15.98797], [50.70794, 15.981570000000001], [50.70828, 15.98844], [50.706520000000005, 15.997880000000002], [50.69563, 15.99365], [50.675230000000006, 15.972840000000001], [50.65932, 15.96812], [50.641760000000005, 15.96611], [50.633100000000006, 15.961780000000001], [50.62991, 15.954780000000001], [50.62579, 15.948380000000002], [50.619580000000006, 15.946030000000002], [50.60802, 15.954590000000001], [50.593810000000005, 15.942660000000002], [50.58334000000001, 15.94663], [50.573730000000005, 15.93659], [50.56542, 15.923510000000002], [50.559250000000006, 15.909960000000002], [50.55785, 15.902360000000002], [50.546730000000004, 15.911460000000002], [50.532790000000006, 15.912860000000002], [50.523030000000006, 15.91735], [50.510740000000006, 15.910150000000002], [50.50658000000001, 15.900480000000002], [50.495050000000006, 15.89356], [50.475620000000006, 15.870730000000002], [50.454980000000006, 15.858620000000002], [50.44659000000001, 15.856600000000002], [50.439690000000006, 15.86297], [50.427330000000005, 15.87212], [50.41937, 15.882330000000001], [50.40314000000001, 15.890640000000001], [50.378980000000006, 15.917850000000001], [50.37514, 15.901700000000002], [50.35869, 15.895520000000001], [50.33607000000001, 15.872990000000001], [50.32193, 15.86428], [50.30754, 15.849420000000002], [50.28135, 15.81657], [50.260070000000006, 15.803300000000002], [50.242560000000005, 15.77725], [50.23010000000001, 15.771540000000002], [50.2169, 15.772450000000001], [50.19990000000001, 15.766280000000002], [50.17298, 15.761770000000002], [50.156000000000006, 15.745780000000002], [50.15243, 15.737750000000002], [50.14920000000001, 15.742560000000001], [50.140370000000004, 15.783830000000002], [50.134240000000005, 15.786330000000001], [50.110290000000006, 15.78701], [50.096140000000005, 15.75857], [50.07956, 15.751740000000002], [50.063590000000005, 15.750490000000001], [50.044740000000004, 15.743750000000002], [50.0337, 15.748790000000001], [50.03329, 15.75524], [50.033170000000005, 15.795800000000002], [50.031980000000004, 15.80315], [50.02901000000001, 15.808980000000002]],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(map_95f9ff089942e4d2a5e4fe6d2ca2f779);
+        
+    
+            poly_line_bf967505ff92d7f3dbd8047e6744899b.bindTooltip(
+                `<div>
+                     Route: PLZCA → PED, 20,000 units
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_e16976cbfc788c93629094ebc60e4c2f = L.polyline(
+                [[52.2297, 21.012240000000002], [52.20347, 20.93933], [52.13376, 20.87965], [52.013920000000006, 20.6183], [51.94209000000001, 20.482390000000002], [51.873090000000005, 20.38682], [51.78367, 20.278750000000002], [51.697, 20.215790000000002], [51.52506, 19.939500000000002], [51.456010000000006, 19.774310000000003], [51.422880000000006, 19.638650000000002], [51.15429, 19.44322], [50.90964, 19.209190000000003], [50.852030000000006, 19.046940000000003], [50.794940000000004, 19.00316], [50.761430000000004, 19.02126], [50.70374, 19.05659], [50.63595, 19.03489], [50.505720000000004, 19.061690000000002], [50.40954000000001, 19.03177], [50.370810000000006, 18.959760000000003], [50.37505, 18.878790000000002], [50.37341000000001, 18.76069], [50.326660000000004, 18.72923], [50.285610000000005, 18.71601], [50.195440000000005, 18.70247], [50.07005, 18.662470000000003], [49.999770000000005, 18.576690000000003], [49.954930000000004, 18.45795], [49.92700000000001, 18.38775], [49.9108, 18.32366], [49.876870000000004, 18.302290000000003], [49.833380000000005, 18.21863], [49.78909, 18.110590000000002], [49.745050000000006, 18.087790000000002], [49.70577, 17.990730000000003], [49.62425, 17.82289], [49.57732000000001, 17.74086], [49.55145, 17.60641], [49.582010000000004, 17.45731], [49.55539, 17.28328], [49.557880000000004, 17.192330000000002], [49.50086, 17.141250000000003], [49.405350000000006, 17.10661], [49.25784, 16.98675], [49.18545, 16.84178], [49.18375, 16.718020000000003], [49.15964, 16.632620000000003], [49.11363, 16.64941], [49.000130000000006, 16.687910000000002], [48.857710000000004, 16.839450000000003], [48.76371, 16.94416], [48.67145000000001, 16.98855], [48.43079, 17.042640000000002], [48.2597, 17.00994], [48.161750000000005, 17.07562], [48.104980000000005, 17.0915], [48.07921, 17.10078], [48.01964, 17.1705], [47.905480000000004, 17.18305], [47.76574, 17.385440000000003], [47.652240000000006, 17.601940000000003], [47.650650000000006, 17.715970000000002], [47.68645, 17.81278], [47.674350000000004, 18.06849], [47.633880000000005, 18.245150000000002], [47.58001, 18.41104], [47.533240000000006, 18.500950000000003], [47.49293, 18.57588], [47.50958000000001, 18.664730000000002], [47.47354000000001, 18.85488], [47.414820000000006, 18.955740000000002], [47.369310000000006, 19.098000000000003], [47.346740000000004, 19.208530000000003], [47.20329, 19.418550000000003], [47.042, 19.56471], [46.960300000000004, 19.61813], [46.901610000000005, 19.61739], [46.84051, 19.67943], [46.694480000000006, 19.808120000000002], [46.54312, 19.88566], [46.359460000000006, 20.00317], [46.25291000000001, 20.037550000000003], [46.17380000000001, 19.976370000000003], [46.119870000000006, 19.80892], [46.03018, 19.737730000000003], [45.89146, 19.69885], [45.73161, 19.70495], [45.653600000000004, 19.722330000000003], [45.5593, 19.720070000000003], [45.34854000000001, 19.7605], [45.277570000000004, 19.9162], [45.20499, 20.070670000000003], [45.13118, 20.089650000000002], [45.0123, 20.198020000000003], [44.93037, 20.298820000000003], [44.88761, 20.28959], [44.84554000000001, 20.2495], [44.77447, 20.27092], [44.71544, 20.400540000000003], [44.71594, 20.513730000000002], [44.67349, 20.6021], [44.58735, 20.64091], [44.57007, 20.71281], [44.58232, 20.807840000000002], [44.57256, 20.91516], [44.584270000000004, 20.966130000000003], [44.550650000000005, 20.985110000000002], [44.50258, 21.02296], [44.44326, 21.0484], [44.320150000000005, 21.091720000000002], [44.24531, 21.11606], [44.15115, 21.112990000000003], [44.00074, 21.270480000000003], [43.944900000000004, 21.38277], [43.867250000000006, 21.43231], [43.76415, 21.437230000000003], [43.70778000000001, 21.53506], [43.628820000000005, 21.56596], [43.53172000000001, 21.699180000000002], [43.491080000000004, 21.76358], [43.424820000000004, 21.796670000000002], [43.355520000000006, 21.825100000000003], [43.307080000000006, 21.799570000000003], [43.19183, 21.855890000000002], [43.049820000000004, 21.98297], [42.98877, 22.02747], [42.92394, 22.03011], [42.87427, 22.08896], [42.845040000000004, 22.1309], [42.76388, 22.08613], [42.648270000000004, 22.05617], [42.56844, 21.970740000000003], [42.504900000000006, 21.877750000000002], [42.43265, 21.74483], [42.34158, 21.721320000000002], [42.112030000000004, 21.699520000000003], [41.92474, 21.633180000000003], [41.840880000000006, 21.701880000000003], [41.81738, 21.675020000000004], [41.78519, 21.705240000000003], [41.759620000000005, 21.74052], [41.72196, 21.805570000000003], [41.661120000000004, 21.834180000000003], [41.61983, 21.90557], [41.549600000000005, 21.97586], [41.54777, 22.03525], [41.51381000000001, 22.0831], [41.477430000000005, 22.10855], [41.419560000000004, 22.19384], [41.35314, 22.35939], [41.30171, 22.428050000000002], [41.21060000000001, 22.494190000000003], [41.09494, 22.57451], [41.028830000000006, 22.60817], [40.85165000000001, 22.666900000000002], [40.69048, 22.71977], [40.609280000000005, 22.728990000000003], [40.579040000000006, 22.634790000000002], [40.52266, 22.573500000000003], [40.45105, 22.58038], [40.36831, 22.60519], [40.29469, 22.541], [40.23384, 22.5377], [40.14976, 22.54107], [40.005570000000006, 22.5832], [39.969190000000005, 22.64026], [39.898390000000006, 22.617060000000002], [39.85033000000001, 22.520480000000003], [39.771, 22.48432], [39.611090000000004, 22.500770000000003], [39.574940000000005, 22.483530000000002], [39.5435, 22.51169], [39.495850000000004, 22.59628], [39.402240000000006, 22.74765], [39.345800000000004, 22.78086], [39.288700000000006, 22.74408], [39.221120000000006, 22.7483], [39.15941, 22.806420000000003], [39.02723, 22.911510000000003], [38.9183, 22.843580000000003], [38.88942, 22.794810000000002], [38.90169, 22.69941], [38.916810000000005, 22.597630000000002], [38.898300000000006, 22.498240000000003], [38.8759, 22.46186], [38.83462, 22.48009], [38.80286, 22.55001], [38.77915, 22.72117], [38.755750000000006, 22.892860000000002], [38.743860000000005, 22.982200000000002], [38.70888, 23.05591], [38.6338, 23.088910000000002], [38.61766, 23.17876], [38.567660000000004, 23.191440000000004], [38.501340000000006, 23.163890000000002], [38.459590000000006, 23.163960000000003], [38.44885, 23.209760000000003], [38.397760000000005, 23.2297], [38.36645, 23.305490000000002], [38.37335, 23.415930000000003], [38.37353, 23.516150000000003], [38.3324, 23.601550000000003], [38.24716, 23.767030000000002], [38.22439, 23.850640000000002], [38.150400000000005, 23.85255], [38.09127, 23.79089], [38.06674, 23.75503], [38.053630000000005, 23.777870000000004], [38.044000000000004, 23.799000000000003]],
+                {"bubblingMouseEvents": true, "color": "purple", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "purple", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(map_95f9ff089942e4d2a5e4fe6d2ca2f779);
+        
+    
+            poly_line_e16976cbfc788c93629094ebc60e4c2f.bindTooltip(
+                `<div>
+                     Route: PLZCA → GMZ, 25,000 units
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_7a974c6f91792cb856f09c8cdb1e56ca = L.polyline(
+                [[50.334320000000005, 2.9290000000000003], [50.334300000000006, 2.9469200000000004], [50.33361000000001, 2.96261], [50.33249000000001, 2.9731], [50.332370000000004, 2.9785700000000004], [50.33324, 2.98504], [50.333290000000005, 2.9855], [50.33240000000001, 2.97778], [50.33353, 2.96464], [50.334390000000006, 2.95101], [50.33442, 2.9393100000000003], [50.33410000000001, 2.92551], [50.334160000000004, 2.9234700000000005], [50.333360000000006, 2.91921], [50.333020000000005, 2.91954], [50.331830000000004, 2.919], [50.32813, 2.9151800000000003], [50.324980000000004, 2.9107800000000004], [50.32289, 2.90917], [50.32025, 2.90621], [50.31179, 2.89659], [50.30498000000001, 2.8907800000000003], [50.29889000000001, 2.88694], [50.28667, 2.87923], [50.26641000000001, 2.86647], [50.256240000000005, 2.86011], [50.246970000000005, 2.85583], [50.24172, 2.85475], [50.236320000000006, 2.8546600000000004], [50.22665000000001, 2.8569500000000003], [50.201220000000006, 2.8675400000000004], [50.185950000000005, 2.87345], [50.18034, 2.8744], [50.17277000000001, 2.8743100000000004], [50.15422, 2.8730700000000002], [50.140570000000004, 2.8721500000000004], [50.107110000000006, 2.8715], [50.0923, 2.8711900000000004], [50.08021, 2.8700200000000002], [50.05172, 2.8749200000000004], [50.04502, 2.8770300000000004], [50.03766, 2.8814900000000003], [50.033660000000005, 2.88342], [50.03005, 2.8843300000000003], [50.023160000000004, 2.8839400000000004], [50.01708000000001, 2.88132], [50.01212, 2.8784400000000003], [50.00556, 2.8759200000000003], [50.000640000000004, 2.87536], [49.99606000000001, 2.87481], [49.987770000000005, 2.87129], [49.974380000000004, 2.8640800000000004], [49.96332, 2.8570300000000004], [49.95910000000001, 2.8549200000000003], [49.955310000000004, 2.85394], [49.94668, 2.85265], [49.943110000000004, 2.8521400000000003], [49.93572, 2.8519300000000003], [49.92015000000001, 2.8511200000000003], [49.90496, 2.84927], [49.89865, 2.84622], [49.89278, 2.8417800000000004], [49.88803, 2.83901], [49.88165000000001, 2.83734], [49.863510000000005, 2.83427], [49.85154000000001, 2.83224], [49.838570000000004, 2.83002], [49.831610000000005, 2.82785], [49.82647000000001, 2.8253700000000004], [49.814130000000006, 2.81922], [49.806920000000005, 2.81523], [49.801950000000005, 2.81077], [49.79426, 2.80466], [49.78193, 2.8004900000000004], [49.764390000000006, 2.7951900000000003], [49.745250000000006, 2.7881], [49.725060000000006, 2.7793], [49.716060000000006, 2.7747900000000003], [49.708330000000004, 2.77177], [49.69404, 2.77179], [49.679570000000005, 2.7722200000000004], [49.67468, 2.7716900000000004], [49.671020000000006, 2.77037], [49.663540000000005, 2.76723], [49.65129, 2.76207], [49.63714, 2.75741], [49.63103, 2.7558900000000004], [49.62263, 2.7554100000000004], [49.61106, 2.75525], [49.60533, 2.7545800000000003], [49.60145000000001, 2.75348], [49.589150000000004, 2.7488200000000003], [49.55819, 2.7342600000000004], [49.54043, 2.7270000000000003], [49.52882, 2.7227], [49.495020000000004, 2.7154700000000003], [49.47710000000001, 2.71173], [49.46963, 2.7094300000000002], [49.459320000000005, 2.7032000000000003], [49.452310000000004, 2.69916], [49.444700000000005, 2.6967100000000004], [49.42996, 2.6953500000000004], [49.41095000000001, 2.6937800000000003], [49.40664, 2.69401], [49.40249000000001, 2.69523], [49.393, 2.69871], [49.38006000000001, 2.70318], [49.373070000000006, 2.7039700000000004], [49.368410000000004, 2.70392], [49.36244000000001, 2.7035500000000003], [49.35499, 2.70203], [49.34375000000001, 2.6977100000000003], [49.33113, 2.6919700000000004], [49.32264000000001, 2.68811], [49.31371000000001, 2.68513], [49.30922, 2.6841000000000004], [49.305530000000005, 2.68488], [49.300050000000006, 2.6889000000000003], [49.28656, 2.69268], [49.281400000000005, 2.6951], [49.27694, 2.6959400000000002], [49.27160000000001, 2.6940500000000003], [49.26276000000001, 2.6882400000000004], [49.2531, 2.6820700000000004], [49.24799, 2.67659], [49.24141, 2.6665], [49.23603000000001, 2.65979], [49.227140000000006, 2.65036], [49.22307000000001, 2.6424700000000003], [49.21837000000001, 2.63199], [49.211960000000005, 2.6185400000000003], [49.206070000000004, 2.61132], [49.197300000000006, 2.60487], [49.19285000000001, 2.60319], [49.18952, 2.6035500000000003], [49.18668, 2.60467], [49.18179000000001, 2.60517], [49.177350000000004, 2.6031600000000004], [49.17181, 2.59968], [49.165000000000006, 2.5988100000000003], [49.16124000000001, 2.5965800000000003], [49.15834, 2.5933], [49.149260000000005, 2.58182], [49.140530000000005, 2.57078], [49.135250000000006, 2.56409], [49.13129000000001, 2.5599600000000002], [49.125530000000005, 2.55717], [49.12093, 2.55649], [49.116980000000005, 2.5553700000000004], [49.111630000000005, 2.5527200000000003], [49.105720000000005, 2.55113], [49.096810000000005, 2.55005], [49.084430000000005, 2.55107], [49.07744, 2.55167], [49.06696, 2.5525200000000003], [49.062780000000004, 2.5520400000000003], [49.05885000000001, 2.5504200000000004], [49.053900000000006, 2.54828], [49.05048000000001, 2.54748], [49.04542000000001, 2.54538], [49.03963, 2.5423400000000003], [49.03043, 2.53879], [49.01843, 2.5327100000000002], [49.005660000000006, 2.5261600000000004], [49.00025, 2.5217400000000003], [48.994200000000006, 2.51513], [48.987140000000004, 2.5068300000000003], [48.985760000000006, 2.50382], [48.982780000000005, 2.50069], [48.977590000000006, 2.4929400000000004], [48.97339, 2.4865700000000004], [48.97390000000001, 2.4855], [48.9746, 2.4865500000000003], [48.96954, 2.50355], [48.96538, 2.5171300000000003], [48.963010000000004, 2.5219500000000004], [48.96115, 2.5240600000000004], [48.95902, 2.52599], [48.958020000000005, 2.5287200000000003], [48.958110000000005, 2.53193], [48.959590000000006, 2.5384], [48.96365, 2.55118], [48.96819000000001, 2.5649200000000003], [48.97525, 2.58284], [48.97524000000001, 2.58529], [48.973910000000004, 2.5887000000000002], [48.968050000000005, 2.60212], [48.95956, 2.62141], [48.95624, 2.6259], [48.951550000000005, 2.6285000000000003], [48.94635, 2.6285800000000004], [48.940740000000005, 2.6282200000000002], [48.93354, 2.6277700000000004], [48.92826, 2.6282300000000003], [48.92278, 2.63002], [48.914280000000005, 2.6345300000000003], [48.90841, 2.6379300000000003], [48.90677, 2.6397000000000004], [48.904680000000006, 2.6436], [48.89904000000001, 2.65627], [48.895790000000005, 2.6632300000000004], [48.89233, 2.66665], [48.887440000000005, 2.6675600000000004], [48.88065, 2.66785], [48.874930000000006, 2.66927], [48.8693, 2.67078], [48.86421000000001, 2.6688], [48.85112, 2.66162], [48.849180000000004, 2.66148], [48.846210000000006, 2.6622500000000002], [48.840430000000005, 2.6638100000000002], [48.83471, 2.6654000000000004], [48.83108000000001, 2.66609], [48.83079000000001, 2.6653000000000002], [48.83155000000001, 2.66421], [48.832170000000005, 2.66575], [48.83088, 2.68907], [48.82945, 2.7131000000000003], [48.82876, 2.73301], [48.832980000000006, 2.79137], [48.831300000000006, 2.7968], [48.83119000000001, 2.7991800000000002], [48.829640000000005, 2.8025700000000002], [48.823370000000004, 2.81103], [48.81866, 2.81795], [48.81861000000001, 2.8188500000000003], [48.81946000000001, 2.82053], [48.82144, 2.8278100000000004], [48.823080000000004, 2.8349800000000003], [48.82339, 2.83603], [48.82249, 2.83976], [48.8207, 2.8416300000000003], [48.81875, 2.8419700000000003], [48.81533, 2.8416300000000003], [48.814620000000005, 2.8418300000000003], [48.808060000000005, 2.8419200000000004], [48.80577, 2.8429900000000004], [48.803140000000006, 2.84694], [48.79712000000001, 2.8585800000000003], [48.79131, 2.8690800000000003], [48.788410000000006, 2.8753200000000003], [48.779770000000006, 2.89184], [48.773210000000006, 2.90437], [48.76605000000001, 2.91805], [48.74302, 2.9621700000000004], [48.738960000000006, 2.96986], [48.73593, 2.97703], [48.73472, 2.9848700000000004], [48.74163, 2.9950500000000004], [48.76014000000001, 3.0226400000000004], [48.764340000000004, 3.0306800000000003], [48.76624, 3.03466], [48.76666, 3.0369300000000004], [48.76758, 3.0380100000000003], [48.76816, 3.0384800000000003], [48.76863, 3.0377400000000003], [48.769130000000004, 3.03697], [48.76970000000001, 3.03615], [48.770480000000006, 3.0353000000000003], [48.772330000000004, 3.03615], [48.774550000000005, 3.0372100000000004], [48.776650000000004, 3.03716], [48.777770000000004, 3.0366700000000004], [48.77948000000001, 3.0329], [48.78152000000001, 3.0304], [48.78286000000001, 3.02979], [48.785520000000005, 3.0298100000000003], [48.786190000000005, 3.02918]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(map_95f9ff089942e4d2a5e4fe6d2ca2f779);
+        
+    
+            poly_line_7a974c6f91792cb856f09c8cdb1e56ca.bindTooltip(
+                `<div>
+                     Route: FR6216 → ALKFM, 500 units
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_50a00a7b70591e904fca950273409137 = L.polyline(
+                [[50.334320000000005, 2.9290000000000003], [50.333290000000005, 2.9855], [50.33442, 2.9393100000000003], [50.333360000000006, 2.91921], [50.31179, 2.89659], [50.26641000000001, 2.86647], [50.246970000000005, 2.85583], [50.22665000000001, 2.8569500000000003], [50.201220000000006, 2.8675400000000004], [50.185950000000005, 2.87345], [50.17277000000001, 2.8743100000000004], [50.140570000000004, 2.8721500000000004], [50.107110000000006, 2.8715], [50.08021, 2.8700200000000002], [50.05172, 2.8749200000000004], [50.03766, 2.8814900000000003], [50.023160000000004, 2.8839400000000004], [50.000640000000004, 2.87536], [49.974380000000004, 2.8640800000000004], [49.955310000000004, 2.85394], [49.90496, 2.84927], [49.88165000000001, 2.83734], [49.85154000000001, 2.83224], [49.82647000000001, 2.8253700000000004], [49.801950000000005, 2.81077], [49.78193, 2.8004900000000004], [49.745250000000006, 2.7881], [49.708330000000004, 2.77177], [49.679570000000005, 2.7722200000000004], [49.63714, 2.75741], [49.61106, 2.75525], [49.589150000000004, 2.7488200000000003], [49.52882, 2.7227], [49.47710000000001, 2.71173], [49.459320000000005, 2.7032000000000003], [49.444700000000005, 2.6967100000000004], [49.42996, 2.6953500000000004], [49.41095000000001, 2.6937800000000003], [49.393, 2.69871], [49.368410000000004, 2.70392], [49.34375000000001, 2.6977100000000003], [49.31371000000001, 2.68513], [49.305530000000005, 2.68488], [49.300050000000006, 2.6889000000000003], [49.28656, 2.69268], [49.27694, 2.6959400000000002], [49.26276000000001, 2.6882400000000004], [49.24799, 2.67659], [49.23603000000001, 2.65979], [49.227140000000006, 2.65036], [49.21837000000001, 2.63199], [49.206070000000004, 2.61132], [49.19285000000001, 2.60319], [49.18179000000001, 2.60517], [49.17181, 2.59968], [49.165000000000006, 2.5988100000000003], [49.15834, 2.5933], [49.140530000000005, 2.57078], [49.13129000000001, 2.5599600000000002], [49.12093, 2.55649], [49.096810000000005, 2.55005], [49.07744, 2.55167], [49.05885000000001, 2.5504200000000004], [49.03963, 2.5423400000000003], [49.01843, 2.5327100000000002], [49.005660000000006, 2.5261600000000004], [48.994200000000006, 2.51513], [48.97106, 2.48319], [48.966550000000005, 2.4755800000000003], [48.959070000000004, 2.4732000000000003], [48.94476, 2.47702], [48.92933000000001, 2.48124], [48.91875, 2.4786], [48.898270000000004, 2.4693500000000004], [48.887840000000004, 2.4739500000000003], [48.88398, 2.4654200000000004], [48.881170000000004, 2.4530000000000003], [48.87171000000001, 2.43289], [48.8663, 2.4229000000000003], [48.8659, 2.4125400000000004], [48.84487000000001, 2.4140200000000003], [48.836510000000004, 2.41228], [48.831210000000006, 2.40347], [48.824450000000006, 2.3836000000000004], [48.81855, 2.36979], [48.81649, 2.35788], [48.80415000000001, 2.3441400000000003], [48.787690000000005, 2.3446700000000003], [48.77675000000001, 2.34586], [48.76767, 2.343], [48.751540000000006, 2.3296300000000003], [48.74022, 2.31806], [48.730630000000005, 2.30831], [48.714400000000005, 2.28892], [48.71396000000001, 2.2757300000000003], [48.718540000000004, 2.2601600000000004], [48.719930000000005, 2.2552700000000003], [48.71549, 2.25361], [48.70519, 2.2495800000000004], [48.698370000000004, 2.2424500000000003], [48.68388, 2.2116000000000002], [48.64893000000001, 2.168], [48.63994, 2.1531700000000003], [48.6253, 2.13755], [48.61341, 2.1167800000000003], [48.602970000000006, 2.07174], [48.59505, 2.04862], [48.57847, 2.0096700000000003], [48.567280000000004, 1.9834600000000002], [48.561960000000006, 1.9554900000000002], [48.549600000000005, 1.9185800000000002], [48.54374000000001, 1.90694], [48.538430000000005, 1.8836300000000001], [48.52908, 1.844], [48.519960000000005, 1.7992000000000001], [48.51252, 1.7685000000000002], [48.50864000000001, 1.7334900000000002], [48.50366, 1.70422], [48.488080000000004, 1.66375], [48.4754, 1.6160500000000002], [48.46347, 1.55963], [48.45862, 1.54346], [48.438590000000005, 1.5245400000000002], [48.401210000000006, 1.4985400000000002], [48.38261000000001, 1.48858], [48.37379000000001, 1.4707000000000001], [48.36572, 1.4497700000000002], [48.35202, 1.4243100000000002], [48.33758, 1.40015], [48.326800000000006, 1.37497], [48.31682000000001, 1.32987], [48.29135, 1.27082], [48.28054, 1.22161], [48.27501, 1.1748200000000002], [48.263580000000005, 1.14392], [48.24884, 1.11837], [48.241530000000004, 1.09647], [48.23917, 1.0686300000000002], [48.230650000000004, 1.01857], [48.22717, 0.9856], [48.22122, 0.9636800000000001], [48.2043, 0.91832], [48.20506, 0.90185], [48.201440000000005, 0.8848300000000001], [48.193200000000004, 0.8521700000000001], [48.19272, 0.8202600000000001], [48.18276, 0.79373], [48.17519, 0.7566], [48.161370000000005, 0.7234100000000001], [48.15155000000001, 0.69881], [48.13626000000001, 0.64363], [48.12131, 0.60623], [48.109350000000006, 0.56144], [48.078970000000005, 0.48506000000000005], [48.074920000000006, 0.46554000000000006], [48.07462, 0.44965000000000005], [48.069010000000006, 0.43054000000000003], [48.054520000000004, 0.36127000000000004], [48.052780000000006, 0.32068], [48.0495, 0.27873000000000003], [48.05673, 0.24770000000000003], [48.059090000000005, 0.21975000000000003], [48.05684, 0.195], [48.047520000000006, 0.15903], [48.03895000000001, 0.14345000000000002], [48.04184, 0.13208], [48.04545, 0.11201000000000001], [48.044090000000004, 0.08971000000000001], [48.036410000000004, 0.04691000000000001], [48.03613000000001, 0.03087], [48.0317, 0.0005700000000000001], [48.021280000000004, -0.0393], [48.01406, -0.06968], [48.01379000000001, -0.08564000000000001], [48.010400000000004, -0.10535000000000001], [48.01126000000001, -0.11810000000000001], [48.01359, -0.13367], [48.00885, -0.15573], [48.00283, -0.19519], [48.0116, -0.24435], [48.00674, -0.27733], [48.01165, -0.29654], [48.020770000000006, -0.3174], [48.028220000000005, -0.34446000000000004], [48.035430000000005, -0.36383000000000004], [48.04807, -0.39993], [48.05238000000001, -0.42131], [48.05064, -0.44455000000000006], [48.052220000000005, -0.46672], [48.057990000000004, -0.49229000000000006], [48.06949, -0.55771], [48.075300000000006, -0.60914], [48.075480000000006, -0.64253], [48.09796, -0.7031900000000001], [48.105070000000005, -0.73716], [48.113640000000004, -0.77024], [48.114830000000005, -0.7989100000000001], [48.10557000000001, -0.8376800000000001], [48.095780000000005, -0.8549700000000001], [48.085860000000004, -0.88314], [48.076330000000006, -0.9206900000000001], [48.074720000000006, -0.9447700000000001], [48.07705000000001, -0.9807300000000001], [48.082060000000006, -1.01024], [48.08623, -1.05946], [48.08959, -1.0818800000000002], [48.088750000000005, -1.1057100000000002], [48.082300000000004, -1.1331200000000001], [48.073640000000005, -1.1539400000000002], [48.070280000000004, -1.18616], [48.07199000000001, -1.2320200000000001], [48.07444, -1.27055], [48.063550000000006, -1.29932], [48.06054, -1.3142500000000001], [48.060120000000005, -1.32315], [48.056470000000004, -1.34495], [48.05238000000001, -1.3486900000000002], [48.04563, -1.34792], [48.04027000000001, -1.35288], [48.034670000000006, -1.36789], [48.02309, -1.39839], [48.00638000000001, -1.4411500000000002], [47.997080000000004, -1.4577600000000002], [47.992230000000006, -1.4609200000000002], [47.985490000000006, -1.4703400000000002], [47.96681, -1.4879300000000002], [47.95535, -1.4845300000000001], [47.95738, -1.4892900000000002], [47.95402000000001, -1.49272], [47.955670000000005, -1.4960600000000002]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(map_95f9ff089942e4d2a5e4fe6d2ca2f779);
+        
+    
+            poly_line_50a00a7b70591e904fca950273409137.bindTooltip(
+                `<div>
+                     Route: FR6216 → FFSVQ, 7,000 units
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_42cb1a88ddacd914a8dcb3a05c0c5580 = L.polyline(
+                [[50.334320000000005, 2.9290000000000003], [50.333290000000005, 2.9855], [50.33442, 2.9393100000000003], [50.333360000000006, 2.91921], [50.31179, 2.89659], [50.26641000000001, 2.86647], [50.246970000000005, 2.85583], [50.22665000000001, 2.8569500000000003], [50.201220000000006, 2.8675400000000004], [50.17277000000001, 2.8743100000000004], [50.107110000000006, 2.8715], [50.05172, 2.8749200000000004], [50.023160000000004, 2.8839400000000004], [50.000640000000004, 2.87536], [49.95519, 2.85392], [49.90439000000001, 2.84911], [49.881530000000005, 2.83732], [49.85132, 2.8322100000000003], [49.826440000000005, 2.8253500000000003], [49.80192, 2.81074], [49.781780000000005, 2.80044], [49.74504, 2.7880100000000003], [49.708220000000004, 2.7717500000000004], [49.67944000000001, 2.7722300000000004], [49.63702000000001, 2.7573800000000004], [49.611000000000004, 2.75525], [49.589020000000005, 2.7487800000000004], [49.528330000000004, 2.72255], [49.47708, 2.71173], [49.45915, 2.7031], [49.42981, 2.6953300000000002], [49.41084000000001, 2.69377], [49.39276, 2.6988000000000003], [49.368190000000006, 2.70391], [49.34353, 2.69761], [49.31356, 2.68509], [49.28652, 2.6927000000000003], [49.27684000000001, 2.69593], [49.262480000000004, 2.68807], [49.247870000000006, 2.6764200000000002], [49.235850000000006, 2.6596100000000003], [49.21811, 2.6314200000000003], [49.20572000000001, 2.6110100000000003], [49.19268, 2.6031700000000004], [49.18162, 2.60514], [49.17139, 2.5995600000000003], [49.158240000000006, 2.5931800000000003], [49.14041, 2.5706300000000004], [49.13127, 2.55995], [49.120810000000006, 2.55648], [49.09676, 2.55005], [49.077400000000004, 2.55167], [49.058420000000005, 2.55019], [49.03934, 2.54224], [49.01838, 2.53268], [48.99374, 2.5146100000000002], [48.970870000000005, 2.4829000000000003], [48.95893, 2.47318], [48.94445, 2.4771500000000004], [48.929230000000004, 2.48125], [48.91857, 2.47854], [48.89822, 2.4693500000000004], [48.88772, 2.4739400000000002], [48.883990000000004, 2.46523], [48.87158, 2.4326700000000003], [48.865790000000004, 2.4124600000000003], [48.844710000000006, 2.41399], [48.836400000000005, 2.41224], [48.831140000000005, 2.40334], [48.82441000000001, 2.3835300000000004], [48.81649, 2.3577700000000004], [48.804010000000005, 2.3440800000000004], [48.78746, 2.34478], [48.767520000000005, 2.34294], [48.740210000000005, 2.31806], [48.714330000000004, 2.2887600000000003], [48.7186, 2.26003], [48.719910000000006, 2.2552100000000004], [48.715450000000004, 2.2536], [48.69834, 2.24237], [48.68372, 2.21137], [48.648810000000005, 2.1678], [48.625170000000004, 2.13742], [48.613400000000006, 2.1167700000000003], [48.595020000000005, 2.04856], [48.578410000000005, 2.0095400000000003], [48.561930000000004, 1.9553300000000002], [48.549330000000005, 1.9178700000000002], [48.54224000000001, 1.90616], [48.531130000000005, 1.9054900000000001], [48.50193, 1.90762], [48.470980000000004, 1.9128800000000001], [48.43768000000001, 1.9062700000000001], [48.405100000000004, 1.8945900000000002], [48.36923, 1.8836700000000002], [48.333600000000004, 1.8658400000000002], [48.27073000000001, 1.8545600000000002], [48.21719, 1.8467600000000002], [48.160470000000004, 1.8542800000000002], [48.12496, 1.8519200000000002], [48.09326, 1.85196], [48.03436000000001, 1.8400800000000002], [48.012480000000004, 1.84478], [47.98666, 1.85786], [47.970000000000006, 1.8577400000000002], [47.95093000000001, 1.8491600000000001], [47.915490000000005, 1.8487300000000002], [47.90204000000001, 1.84539], [47.89985, 1.8328900000000001], [47.89640000000001, 1.7814100000000002], [47.877720000000004, 1.73581], [47.83652000000001, 1.66914], [47.81017000000001, 1.6250600000000002], [47.779300000000006, 1.5898], [47.733180000000004, 1.51119], [47.705310000000004, 1.4529], [47.674310000000006, 1.3981800000000002], [47.6362, 1.35776], [47.61954, 1.3342900000000002], [47.616200000000006, 1.2928700000000002], [47.61966, 1.2411500000000002], [47.616350000000004, 1.2052200000000002], [47.61493, 1.15652], [47.599340000000005, 1.1044900000000002], [47.5683, 1.0460900000000002], [47.53907, 0.9692700000000001], [47.51588, 0.9093700000000001], [47.501650000000005, 0.8582500000000001], [47.47491, 0.7768], [47.45293, 0.75024], [47.444500000000005, 0.73897], [47.43229, 0.7355400000000001], [47.409000000000006, 0.7238600000000001], [47.40307000000001, 0.7128800000000001], [47.39444, 0.7060900000000001], [47.37369, 0.7153100000000001], [47.353280000000005, 0.70637], [47.32488000000001, 0.6913400000000001], [47.300790000000006, 0.69211], [47.27675000000001, 0.6774100000000001], [47.24774000000001, 0.6635500000000001], [47.217380000000006, 0.65712], [47.17943, 0.64151], [47.157630000000005, 0.62538], [47.14058000000001, 0.61995], [47.107670000000006, 0.5914], [47.07455, 0.58662], [47.05035, 0.5874100000000001], [47.03246, 0.57149], [46.98704, 0.5483300000000001], [46.950210000000006, 0.5486000000000001], [46.929930000000006, 0.54083], [46.908150000000006, 0.52375], [46.889970000000005, 0.51866], [46.874190000000006, 0.5199100000000001], [46.857710000000004, 0.52564], [46.83066, 0.52188], [46.797050000000006, 0.51158], [46.77902, 0.49756000000000006], [46.76625000000001, 0.47069000000000005], [46.74065, 0.41714], [46.72605, 0.39148000000000005], [46.708180000000006, 0.37343000000000004], [46.68422, 0.36175], [46.65883, 0.35528000000000004], [46.639770000000006, 0.35396000000000005], [46.61896, 0.34386000000000005], [46.591480000000004, 0.30168], [46.575390000000006, 0.28996000000000005], [46.556960000000004, 0.28458], [46.538160000000005, 0.24647000000000002], [46.52414, 0.22499000000000002], [46.50854, 0.20970000000000003], [46.50788000000001, 0.17972000000000002], [46.510780000000004, 0.13908], [46.505720000000004, 0.10881], [46.48255, 0.0689], [46.470530000000004, 0.03504], [46.44493000000001, -0.037700000000000004], [46.39423, -0.18249], [46.38711000000001, -0.2023], [46.37581, -0.21084000000000003], [46.367920000000005, -0.23219], [46.36305, -0.26231000000000004], [46.32967000000001, -0.33114000000000005], [46.29847, -0.37051], [46.283840000000005, -0.39637000000000006], [46.25762, -0.42019], [46.21003, -0.46220000000000006], [46.181990000000006, -0.49915000000000004], [46.15256, -0.5190400000000001], [46.130990000000004, -0.5302100000000001], [46.100620000000006, -0.53529], [46.08111, -0.53122], [46.054480000000005, -0.53702], [46.02118, -0.54157], [45.97538, -0.5471], [45.967000000000006, -0.5514600000000001], [45.960750000000004, -0.54566], [45.955400000000004, -0.51129], [45.941590000000005, -0.48844000000000004], [45.925180000000005, -0.46118000000000003], [45.91472, -0.44046], [45.910360000000004, -0.43212000000000006], [45.905260000000006, -0.42676000000000003], [45.89020000000001, -0.43816000000000005], [45.87247000000001, -0.44285], [45.856100000000005, -0.43325], [45.846000000000004, -0.41862000000000005], [45.83663000000001, -0.4086], [45.831630000000004, -0.40646000000000004], [45.822160000000004, -0.40645000000000003], [45.81132, -0.39848000000000006], [45.805930000000004, -0.39652000000000004], [45.803270000000005, -0.39082000000000006], [45.801820000000006, -0.38851], [45.795170000000006, -0.37999000000000005], [45.789480000000005, -0.35633000000000004], [45.78784, -0.34352000000000005], [45.78685, -0.33913000000000004], [45.78222, -0.34162000000000003], [45.776810000000005, -0.34254], [45.76926, -0.33849], [45.758190000000006, -0.33939], [45.752460000000006, -0.33597000000000005], [45.74882, -0.33418000000000003], [45.747870000000006, -0.33863000000000004]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(map_95f9ff089942e4d2a5e4fe6d2ca2f779);
+        
+    
+            poly_line_42cb1a88ddacd914a8dcb3a05c0c5580.bindTooltip(
+                `<div>
+                     Route: FR6216 → FLDNI, 3,000 units
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_6dc77f214c2ba43cc17db75f7615417a = L.polyline(
+                [[50.334320000000005, 2.9290000000000003], [50.333290000000005, 2.9855], [50.33442, 2.9393100000000003], [50.333360000000006, 2.91921], [50.32813, 2.9151800000000003], [50.31691000000001, 2.90174], [50.320330000000006, 2.87846], [50.323370000000004, 2.85095], [50.329240000000006, 2.8251600000000003], [50.34205000000001, 2.7979100000000003], [50.366510000000005, 2.7668600000000003], [50.37286, 2.7599600000000004], [50.383160000000004, 2.7562800000000003], [50.39099, 2.75606], [50.399530000000006, 2.7513300000000003], [50.41761, 2.72614], [50.437360000000005, 2.70513], [50.453680000000006, 2.6971000000000003], [50.47245, 2.6956100000000003], [50.48084, 2.6934400000000003], [50.4898, 2.6861800000000002], [50.49958, 2.6663200000000002], [50.505300000000005, 2.6472800000000003], [50.51577, 2.5905], [50.527640000000005, 2.56172], [50.53573, 2.54835], [50.54238, 2.52868], [50.542590000000004, 2.4976000000000003], [50.54645000000001, 2.4712300000000003], [50.555510000000005, 2.4478000000000004], [50.55928, 2.42178], [50.56714, 2.38865], [50.581630000000004, 2.36857], [50.59441, 2.35726], [50.615230000000004, 2.3175600000000003], [50.63768, 2.2798200000000004], [50.64497, 2.26981], [50.656150000000004, 2.2619900000000004], [50.6773, 2.2454400000000003], [50.69744000000001, 2.22141], [50.708000000000006, 2.1984500000000002], [50.723910000000004, 2.1655100000000003], [50.73431, 2.1503], [50.74837, 2.12752], [50.76091, 2.11961], [50.793470000000006, 2.1056000000000004], [50.80373, 2.0980600000000003], [50.808020000000006, 2.08866], [50.81864, 2.0651], [50.839220000000005, 2.04633], [50.85054, 2.0274900000000002], [50.86099, 2.02123], [50.871770000000005, 2.01209], [50.8864, 1.9997600000000002], [50.8975, 1.98781], [50.90945000000001, 1.9454500000000001], [50.92526, 1.9152300000000002], [50.933240000000005, 1.9098600000000001], [50.93619, 1.91033], [50.937450000000005, 1.90758], [50.934650000000005, 1.89474], [50.93475, 1.8815000000000002], [50.93681, 1.85668], [50.94212, 1.8204000000000002], [50.94263, 1.8134100000000002], [50.93927000000001, 1.8151300000000001], [50.93764, 1.8228400000000002], [50.93441000000001, 1.8258500000000002], [50.92772, 1.8254000000000001], [50.923460000000006, 1.81743], [50.92334, 1.81441], [50.91633, 1.8055900000000003], [50.91630000000001, 1.7946000000000002], [50.92278, 1.7806600000000001], [51.00428, 1.53146], [51.01556, 1.49869], [51.03022000000001, 1.46642], [51.08529000000001, 1.3575000000000002], [51.097210000000004, 1.3271000000000002], [51.109390000000005, 1.28465], [51.11319, 1.24242], [51.09812, 1.16589], [51.09617, 1.1390200000000001], [51.095560000000006, 1.1402400000000001], [51.094170000000005, 1.12745], [51.093360000000004, 1.10504], [51.09160000000001, 1.07999], [51.1, 1.01415], [51.10192000000001, 0.9955200000000001], [51.108360000000005, 0.9748200000000001], [51.12024, 0.9442200000000001], [51.134420000000006, 0.91654], [51.14287, 0.9040800000000001], [51.168730000000004, 0.8546800000000001], [51.184900000000006, 0.83394], [51.18811, 0.8248700000000001], [51.18929000000001, 0.8026800000000001], [51.19433, 0.7810100000000001], [51.20347, 0.75641], [51.215880000000006, 0.72489], [51.222590000000004, 0.7131400000000001], [51.224500000000006, 0.69935], [51.234880000000004, 0.68062], [51.244690000000006, 0.65481], [51.26381000000001, 0.6138100000000001], [51.276790000000005, 0.5920300000000001], [51.282630000000005, 0.58184], [51.287980000000005, 0.56218], [51.28764, 0.5534], [51.28439, 0.54898], [51.285120000000006, 0.54403], [51.288610000000006, 0.5363100000000001], [51.28961, 0.52998], [51.296130000000005, 0.5136200000000001], [51.29802, 0.50476], [51.295500000000004, 0.48793000000000003], [51.302260000000004, 0.45911], [51.307860000000005, 0.42862000000000006], [51.311400000000006, 0.41245000000000004], [51.31027, 0.39863000000000004], [51.30821, 0.36521000000000003], [51.301860000000005, 0.33459000000000005], [51.30261, 0.28831], [51.300670000000004, 0.23224000000000003], [51.30344, 0.20720000000000002], [51.303470000000004, 0.18663000000000002], [51.29368, 0.1492], [51.287290000000006, 0.12702000000000002], [51.285210000000006, 0.11033000000000001], [51.2777, 0.08595000000000001], [51.272670000000005, 0.049980000000000004], [51.267880000000005, 0.0178], [51.269040000000004, -0.00956], [51.26370000000001, -0.02893], [51.25793, -0.04637], [51.25744, -0.08317000000000001], [51.261, -0.11602000000000001], [51.266920000000006, -0.15246], [51.267810000000004, -0.17085], [51.26165, -0.18669000000000002], [51.25773, -0.20648000000000002], [51.257650000000005, -0.21972000000000003], [51.26478, -0.24203000000000002], [51.275490000000005, -0.25985], [51.28652, -0.27154], [51.291880000000006, -0.28723000000000004], [51.29345000000001, -0.30210000000000004], [51.295970000000004, -0.31082000000000004], [51.3034, -0.32059000000000004], [51.311550000000004, -0.32669000000000004], [51.31425, -0.33209000000000005], [51.31559000000001, -0.34299], [51.313390000000005, -0.35412000000000005], [51.309020000000004, -0.38481000000000004], [51.305820000000004, -0.40009000000000006], [51.30725, -0.41215], [51.31566, -0.43537000000000003], [51.322410000000005, -0.45129], [51.3248, -0.46618000000000004], [51.33218, -0.48195000000000005], [51.34353, -0.48545000000000005], [51.35210000000001, -0.48944000000000004], [51.36746, -0.5048], [51.37946, -0.51237], [51.391760000000005, -0.53113], [51.40767, -0.54066], [51.42389000000001, -0.54042], [51.43043, -0.54054], [51.43666, -0.53581], [51.45105, -0.5221300000000001], [51.46213, -0.5155500000000001], [51.4682, -0.50836], [51.478080000000006, -0.5040600000000001], [51.48959000000001, -0.49571000000000004], [51.496, -0.49441], [51.50177000000001, -0.49670000000000003], [51.50708, -0.5010600000000001], [51.51303000000001, -0.50185], [51.527120000000004, -0.49861000000000005], [51.542170000000006, -0.5037900000000001], [51.549200000000006, -0.52109], [51.56145, -0.53847], [51.566950000000006, -0.5606800000000001], [51.575410000000005, -0.57994], [51.58133, -0.5854400000000001], [51.584740000000004, -0.5955600000000001], [51.595220000000005, -0.63099], [51.59787000000001, -0.6607900000000001], [51.59798000000001, -0.6754600000000001], [51.602920000000005, -0.6901], [51.60436000000001, -0.7014300000000001], [51.60934, -0.7113200000000001], [51.610870000000006, -0.7357100000000001], [51.61430000000001, -0.75531], [51.610310000000005, -0.7805500000000001], [51.61059, -0.7914500000000001], [51.615570000000005, -0.8043600000000001], [51.62333, -0.82247], [51.624990000000004, -0.8362], [51.626990000000006, -0.8531700000000001], [51.62883000000001, -0.86826], [51.636210000000005, -0.8820500000000001], [51.653960000000005, -0.8965400000000001], [51.660990000000005, -0.9145500000000001], [51.662490000000005, -0.92756], [51.661820000000006, -0.9397700000000001], [51.66523, -0.9526700000000001], [51.67049, -0.95974], [51.67072, -0.9634300000000001], [51.670440000000006, -0.96506], [51.672000000000004, -0.9619500000000001], [51.676640000000006, -0.9534500000000001], [51.688840000000006, -0.97062], [51.69446000000001, -0.9809300000000001], [51.70018, -0.9840900000000001], [51.70239, -0.9870000000000001], [51.70561000000001, -0.98884], [51.70982000000001, -0.98606], [51.72133, -0.9804700000000001], [51.72453, -0.9817600000000001], [51.728170000000006, -0.9772500000000001], [51.73874000000001, -0.97067], [51.738510000000005, -0.9599700000000001], [51.74481, -0.9574600000000001], [51.747040000000005, -0.9593400000000001], [51.74826, -0.95352], [51.754310000000004, -0.9267200000000001], [51.756220000000006, -0.9218200000000001], [51.75892, -0.9210600000000001], [51.76061000000001, -0.9150400000000001], [51.762710000000006, -0.9123100000000001], [51.76547000000001, -0.91417], [51.77026000000001, -0.9174200000000001], [51.77243000000001, -0.9188900000000001], [51.773790000000005, -0.9161], [51.77584, -0.90861], [51.77803, -0.9006700000000001], [51.78067000000001, -0.89258]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(map_95f9ff089942e4d2a5e4fe6d2ca2f779);
+        
+    
+            poly_line_6dc77f214c2ba43cc17db75f7615417a.bindTooltip(
+                `<div>
+                     Route: FR6216 → FLXXC, 6,500 units
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_b6d3ba7b0e00b829105f64cdc70bc39d = L.polyline(
+                [[50.334320000000005, 2.9290000000000003], [50.333290000000005, 2.9855], [50.33442, 2.9393100000000003], [50.31179, 2.89659], [50.22665000000001, 2.8569500000000003], [50.107110000000006, 2.8715], [50.000640000000004, 2.87536], [49.80192, 2.81074], [49.589020000000005, 2.7487800000000004], [49.47708, 2.71173], [49.39276, 2.6988000000000003], [49.28652, 2.6927000000000003], [49.235850000000006, 2.6596100000000003], [49.19268, 2.6031700000000004], [49.120810000000006, 2.55648], [49.03934, 2.54224], [48.99374, 2.5146100000000002], [48.970870000000005, 2.4829000000000003], [48.94445, 2.4771500000000004], [48.89822, 2.4693500000000004], [48.87158, 2.4326700000000003], [48.844710000000006, 2.41399], [48.82441000000001, 2.3835300000000004], [48.804010000000005, 2.3440800000000004], [48.767520000000005, 2.34294], [48.714330000000004, 2.2887600000000003], [48.715450000000004, 2.2536], [48.68372, 2.21137], [48.613400000000006, 2.1167700000000003], [48.578410000000005, 2.0095400000000003], [48.561930000000004, 1.9553300000000002], [48.531130000000005, 1.9054900000000001], [48.405100000000004, 1.8945900000000002], [48.27073000000001, 1.8545600000000002], [48.160470000000004, 1.8542800000000002], [48.03436000000001, 1.8400800000000002], [47.95093000000001, 1.8491600000000001], [47.915490000000005, 1.8487300000000002], [47.89985, 1.8328900000000001], [47.877720000000004, 1.73581], [47.83652000000001, 1.66914], [47.733180000000004, 1.51119], [47.674310000000006, 1.3981800000000002], [47.6362, 1.35776], [47.616200000000006, 1.2928700000000002], [47.599340000000005, 1.1044900000000002], [47.53907, 0.9692700000000001], [47.501650000000005, 0.8582500000000001], [47.47491, 0.7768], [47.43229, 0.7355400000000001], [47.39444, 0.7060900000000001], [47.353280000000005, 0.70637], [47.24774000000001, 0.6635500000000001], [47.03246, 0.57149], [46.874190000000006, 0.5199100000000001], [46.797050000000006, 0.51158], [46.74065, 0.41714], [46.708180000000006, 0.37343000000000004], [46.65883, 0.35528000000000004], [46.61896, 0.34386000000000005], [46.591480000000004, 0.30168], [46.538160000000005, 0.24647000000000002], [46.50854, 0.20970000000000003], [46.505720000000004, 0.10881], [46.44493000000001, -0.037700000000000004], [46.39423, -0.18249], [46.36305, -0.26231000000000004], [46.29847, -0.37051], [46.15256, -0.5190400000000001], [45.97538, -0.5471], [45.84832, -0.6245900000000001], [45.79245, -0.66456], [45.695640000000004, -0.64898], [45.609590000000004, -0.59865], [45.513740000000006, -0.6126], [45.42866, -0.60528], [45.348600000000005, -0.57938], [45.26887000000001, -0.54951], [45.17414, -0.48458000000000007], [45.06870000000001, -0.46344], [45.012240000000006, -0.42964], [44.96679, -0.43851], [44.89923, -0.49491], [44.87342, -0.5068100000000001], [44.83209, -0.5008400000000001], [44.777950000000004, -0.5577700000000001], [44.78952, -0.61817], [44.769850000000005, -0.66339], [44.7267, -0.7312200000000001], [44.64631000000001, -0.8383700000000001], [44.53217, -0.83689], [44.45709, -0.8121100000000001], [44.37689, -0.84111], [44.27938, -0.8933300000000001], [44.048080000000006, -1.00967], [43.95237, -1.0707200000000001], [43.91765, -1.11711], [43.874190000000006, -1.13443], [43.83724, -1.17907], [43.785590000000006, -1.20927], [43.69359, -1.2340000000000002], [43.65012, -1.34939], [43.61849, -1.4069500000000001], [43.578950000000006, -1.4239300000000001], [43.51371, -1.4436600000000002], [43.48584, -1.4484700000000001], [43.46437, -1.48557], [43.43995, -1.5688600000000001], [43.388830000000006, -1.64098], [43.35242, -1.7177200000000001], [43.327760000000005, -1.80889], [43.295480000000005, -1.9015100000000003], [43.275760000000005, -2.0049], [43.29187, -2.03818], [43.28455, -2.1002300000000003], [43.28329, -2.2158700000000002], [43.270070000000004, -2.30528], [43.28614, -2.3546400000000003], [43.25529, -2.3898], [43.21302, -2.4126600000000002], [43.199720000000006, -2.4326600000000003], [43.1794, -2.4265800000000004], [43.114340000000006, -2.42943], [43.07708, -2.4516], [43.02474, -2.51969], [42.956720000000004, -2.6213100000000003], [42.91834, -2.67736], [42.905750000000005, -2.71016], [42.8877, -2.6974400000000003], [42.857110000000006, -2.74425], [42.80997000000001, -2.7985900000000004], [42.75831, -2.82485], [42.739700000000006, -2.86722], [42.722390000000004, -2.8666500000000004], [42.703920000000004, -2.9218800000000003], [42.67165000000001, -3.02808], [42.62803, -3.10928], [42.62181, -3.1784900000000005], [42.580740000000006, -3.25028], [42.49712, -3.36641], [42.43627, -3.49806], [42.40464, -3.5485300000000004], [42.36336, -3.5919900000000005], [42.33025000000001, -3.64787], [42.31626000000001, -3.7033700000000005], [42.297360000000005, -3.8402100000000003], [42.233430000000006, -3.9857600000000004], [42.13396, -4.11929], [42.1036, -4.18832], [42.06239, -4.232200000000001], [41.988290000000006, -4.42133], [41.916740000000004, -4.50971], [41.813390000000005, -4.5819600000000005], [41.69888, -4.71699], [41.67427, -4.7604500000000005], [41.62919, -4.7808], [41.53698000000001, -4.8992], [41.51279, -4.9980400000000005], [41.482710000000004, -5.04098], [41.3697, -5.16305], [41.25795, -5.276280000000001], [41.206030000000005, -5.3298000000000005], [41.166250000000005, -5.40641], [41.13624, -5.487660000000001], [41.086000000000006, -5.5042800000000005], [41.0456, -5.5574200000000005], [41.00007, -5.6322], [40.968500000000006, -5.6983500000000005], [40.948350000000005, -5.746840000000001], [40.91642, -5.8586800000000006], [40.7762, -6.27606], [40.696220000000004, -6.41495], [40.635360000000006, -6.4899000000000004], [40.60211, -6.51344], [40.582170000000005, -6.58727], [40.58775, -6.755820000000001], [40.61497000000001, -6.8836], [40.60387, -7.053770000000001], [40.59203, -7.14226], [40.56485, -7.218000000000001], [40.461290000000005, -7.261880000000001], [40.364290000000004, -7.3199700000000005], [40.263850000000005, -7.4376500000000005], [40.231190000000005, -7.485880000000001], [40.17018, -7.48467], [40.09772, -7.47102], [40.05331, -7.4763], [39.97361, -7.458850000000001], [39.913120000000006, -7.47714], [39.834970000000006, -7.526090000000001], [39.787600000000005, -7.568300000000001], [39.708920000000006, -7.694500000000001], [39.62897, -7.754740000000001], [39.5722, -7.78389], [39.551080000000006, -7.837980000000001], [39.520480000000006, -7.988320000000001], [39.49526, -8.07455], [39.48649, -8.1506], [39.47955, -8.22766], [39.4909, -8.307920000000001], [39.488910000000004, -8.44888], [39.46871, -8.508030000000002], [39.471970000000006, -8.584000000000001], [39.47883, -8.62739], [39.440630000000006, -8.62833], [39.366490000000006, -8.62974], [39.292060000000006, -8.68932], [39.23731, -8.759680000000001], [39.12848, -8.901340000000001], [39.09461, -8.932360000000001], [39.05529000000001, -8.94217], [38.98563, -8.971900000000002], [38.89387, -9.05028], [38.87355, -9.07848]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(map_95f9ff089942e4d2a5e4fe6d2ca2f779);
+        
+    
+            poly_line_b6d3ba7b0e00b829105f64cdc70bc39d.bindTooltip(
+                `<div>
+                     Route: FR6216 → ISNQE, 44,000 units
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_70bb9a47b3c6f6907757917ce22e92e9 = L.polyline(
+                [[50.334320000000005, 2.9290000000000003], [50.333290000000005, 2.9855], [50.33442, 2.9393100000000003], [50.31179, 2.89659], [50.22665000000001, 2.8569500000000003], [50.107110000000006, 2.8715], [50.000640000000004, 2.87536], [49.80192, 2.81074], [49.589020000000005, 2.7487800000000004], [49.47708, 2.71173], [49.39276, 2.6988000000000003], [49.28652, 2.6927000000000003], [49.235850000000006, 2.6596100000000003], [49.19268, 2.6031700000000004], [49.120810000000006, 2.55648], [49.03934, 2.54224], [48.99374, 2.5146100000000002], [48.970870000000005, 2.4829000000000003], [48.94445, 2.4771500000000004], [48.89822, 2.4693500000000004], [48.87158, 2.4326700000000003], [48.844710000000006, 2.41399], [48.82441000000001, 2.3835300000000004], [48.804010000000005, 2.3440800000000004], [48.767520000000005, 2.34294], [48.714330000000004, 2.2887600000000003], [48.715450000000004, 2.2536], [48.68372, 2.21137], [48.613400000000006, 2.1167700000000003], [48.578410000000005, 2.0095400000000003], [48.561930000000004, 1.9553300000000002], [48.531130000000005, 1.9054900000000001], [48.405100000000004, 1.8945900000000002], [48.27073000000001, 1.8545600000000002], [48.160470000000004, 1.8542800000000002], [48.03436000000001, 1.8400800000000002], [47.95093000000001, 1.8491600000000001], [47.915490000000005, 1.8487300000000002], [47.89985, 1.8328900000000001], [47.877720000000004, 1.73581], [47.83652000000001, 1.66914], [47.733180000000004, 1.51119], [47.674310000000006, 1.3981800000000002], [47.6362, 1.35776], [47.616200000000006, 1.2928700000000002], [47.599340000000005, 1.1044900000000002], [47.53907, 0.9692700000000001], [47.501650000000005, 0.8582500000000001], [47.47491, 0.7768], [47.43229, 0.7355400000000001], [47.39444, 0.7060900000000001], [47.353280000000005, 0.70637], [47.24774000000001, 0.6635500000000001], [47.14058000000001, 0.61995], [47.03246, 0.57149], [46.874190000000006, 0.5199100000000001], [46.797050000000006, 0.51158], [46.74065, 0.41714], [46.708180000000006, 0.37343000000000004], [46.65883, 0.35528000000000004], [46.61896, 0.34386000000000005], [46.591480000000004, 0.30168], [46.538160000000005, 0.24647000000000002], [46.50854, 0.20970000000000003], [46.505720000000004, 0.10881], [46.44493000000001, -0.037700000000000004], [46.39423, -0.18249], [46.36305, -0.26231000000000004], [46.29847, -0.37051], [46.15256, -0.5190400000000001], [45.97538, -0.5471], [45.84832, -0.6245900000000001], [45.79245, -0.66456], [45.695640000000004, -0.64898], [45.609590000000004, -0.59865], [45.513740000000006, -0.6126], [45.42866, -0.60528], [45.348600000000005, -0.57938], [45.26887000000001, -0.54951], [45.17414, -0.48458000000000007], [45.12675, -0.48559], [45.06870000000001, -0.46344], [45.012240000000006, -0.42964], [44.96679, -0.43851], [44.89923, -0.49491], [44.87342, -0.5068100000000001], [44.83209, -0.5008400000000001], [44.777950000000004, -0.5577700000000001], [44.78952, -0.61817], [44.769850000000005, -0.66339], [44.7267, -0.7312200000000001], [44.64631000000001, -0.8383700000000001], [44.590160000000004, -0.84174], [44.53217, -0.83689], [44.5011, -0.84123], [44.45709, -0.8121100000000001], [44.37689, -0.84111], [44.27938, -0.8933300000000001], [44.15898000000001, -0.9563200000000001], [44.048080000000006, -1.00967], [43.95237, -1.0707200000000001], [43.91765, -1.11711], [43.874190000000006, -1.13443], [43.83724, -1.17907], [43.785590000000006, -1.20927], [43.69359, -1.2340000000000002], [43.65012, -1.34939], [43.61849, -1.4069500000000001], [43.578950000000006, -1.4239300000000001], [43.51371, -1.4436600000000002], [43.48584, -1.4484700000000001], [43.46437, -1.48557], [43.43995, -1.5688600000000001], [43.388830000000006, -1.64098], [43.35242, -1.7177200000000001], [43.327760000000005, -1.80889], [43.295480000000005, -1.9015100000000003], [43.275760000000005, -2.0049], [43.29187, -2.03818], [43.28455, -2.1002300000000003], [43.28329, -2.2158700000000002], [43.270070000000004, -2.30528], [43.28614, -2.3546400000000003], [43.25529, -2.3898], [43.21302, -2.4126600000000002], [43.199720000000006, -2.4326600000000003], [43.1794, -2.4265800000000004], [43.114340000000006, -2.42943], [43.07708, -2.4516], [43.02474, -2.51969], [42.956720000000004, -2.6213100000000003], [42.91834, -2.67736], [42.905750000000005, -2.71016], [42.8877, -2.6974400000000003], [42.857110000000006, -2.74425], [42.80997000000001, -2.7985900000000004], [42.78802, -2.82331], [42.75831, -2.82485], [42.739700000000006, -2.86722], [42.722390000000004, -2.8666500000000004], [42.70740000000001, -2.88497], [42.703920000000004, -2.9218800000000003], [42.67165000000001, -3.02808], [42.62803, -3.10928], [42.62181, -3.1784900000000005], [42.580740000000006, -3.25028], [42.49712, -3.36641], [42.43627, -3.49806], [42.40464, -3.5485300000000004], [42.36336, -3.5919900000000005], [42.33025000000001, -3.64787], [42.31626000000001, -3.7033700000000005], [42.297360000000005, -3.8402100000000003], [42.233430000000006, -3.9857600000000004], [42.13396, -4.11929], [42.1036, -4.18832], [42.06239, -4.232200000000001], [41.988290000000006, -4.42133], [41.916740000000004, -4.50971], [41.813390000000005, -4.5819600000000005], [41.69888, -4.71699], [41.67427, -4.7604500000000005], [41.62919, -4.7808], [41.53698000000001, -4.8992], [41.51279, -4.9980400000000005], [41.482710000000004, -5.04098], [41.3697, -5.16305], [41.25795, -5.276280000000001], [41.206030000000005, -5.3298000000000005], [41.166250000000005, -5.40641], [41.13624, -5.487660000000001], [41.086000000000006, -5.5042800000000005], [41.0456, -5.5574200000000005], [41.00007, -5.6322], [40.99611, -5.67504], [40.968500000000006, -5.6983500000000005], [40.948350000000005, -5.746840000000001], [40.91642, -5.8586800000000006], [40.7762, -6.27606], [40.696220000000004, -6.41495], [40.635360000000006, -6.4899000000000004], [40.60211, -6.51344], [40.582170000000005, -6.58727], [40.58775, -6.755820000000001], [40.59866, -6.8102100000000005], [40.61497000000001, -6.8836], [40.60387, -7.053770000000001], [40.566460000000006, -7.22104], [40.56727, -7.243060000000001], [40.59369, -7.25959], [40.635070000000006, -7.28164], [40.6394, -7.344810000000001], [40.62765, -7.40603], [40.635310000000004, -7.458990000000001], [40.61932, -7.51691], [40.61213, -7.572290000000001], [40.61327, -7.646730000000001], [40.63324, -7.813300000000001], [40.648010000000006, -7.86066], [40.623940000000005, -7.92935], [40.631870000000006, -8.004900000000001], [40.644220000000004, -8.05414], [40.663590000000006, -8.074570000000001], [40.68722, -8.078370000000001], [40.689350000000005, -8.0967], [40.699740000000006, -8.12944], [40.68166, -8.17192], [40.687290000000004, -8.247200000000001], [40.668870000000005, -8.329130000000001], [40.650130000000004, -8.37148], [40.66514, -8.415370000000001], [40.6813, -8.47049], [40.71352, -8.48258]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(map_95f9ff089942e4d2a5e4fe6d2ca2f779);
+        
+    
+            poly_line_70bb9a47b3c6f6907757917ce22e92e9.bindTooltip(
+                `<div>
+                     Route: FR6216 → OAHLE, 1,000 units
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_2b1a3d50b08132a507f4539638ab1587 = L.polyline(
+                [[50.02901000000001, 15.808980000000002], [50.014300000000006, 15.79629], [49.96922000000001, 15.798560000000002], [49.92418000000001, 15.828170000000002], [49.882070000000006, 15.819590000000002], [49.777640000000005, 15.81661], [49.69953, 15.8145], [49.66104000000001, 15.902260000000002], [49.554680000000005, 15.950560000000001], [49.507290000000005, 15.983170000000001], [49.462390000000006, 15.964570000000002], [49.41626, 15.956540000000002], [49.39264000000001, 15.948220000000001], [49.368590000000005, 15.973540000000002], [49.3226, 16.083180000000002], [49.271480000000004, 16.2562], [49.239560000000004, 16.37111], [49.18920000000001, 16.445140000000002], [49.16140000000001, 16.58235], [49.151860000000006, 16.629920000000002], [49.116730000000004, 16.647840000000002], [49.07725000000001, 16.660300000000003], [49.00318000000001, 16.68759], [48.861450000000005, 16.835], [48.76764000000001, 16.94031], [48.674240000000005, 16.98807], [48.438750000000006, 17.04294], [48.265660000000004, 17.00906], [48.162490000000005, 17.07515], [48.10660000000001, 17.08916], [48.08225, 17.099970000000003], [48.05782000000001, 17.102970000000003], [48.02239, 17.16747], [47.974560000000004, 17.179450000000003], [47.91064, 17.18192], [47.7884, 17.331000000000003], [47.65722, 17.59174], [47.646710000000006, 17.706870000000002], [47.68618000000001, 17.80471], [47.67578, 18.056810000000002], [47.63597, 18.238210000000002], [47.58429, 18.406470000000002], [47.57544, 18.465880000000002], [47.53905, 18.499740000000003], [47.494020000000006, 18.569660000000002], [47.5108, 18.653160000000003], [47.47782, 18.84685], [47.434920000000005, 18.8932], [47.41902, 18.950120000000002], [47.370760000000004, 19.09392], [47.350530000000006, 19.204340000000002], [47.21311, 19.41174], [47.049640000000004, 19.555870000000002], [46.969660000000005, 19.61438], [46.91127, 19.61455], [46.84666000000001, 19.667260000000002], [46.78634, 19.746090000000002], [46.70895, 19.798530000000003], [46.63024, 19.83378], [46.55051, 19.883830000000003], [46.368, 19.99958], [46.28275000000001, 20.04127], [46.2047, 20.01321], [46.177530000000004, 19.98081], [46.13615, 19.8869], [46.121700000000004, 19.81333], [46.03914, 19.742630000000002], [45.90475000000001, 19.69931], [45.739990000000006, 19.703100000000003], [45.6565, 19.72399], [45.568870000000004, 19.72069], [45.36551, 19.75174], [45.306700000000006, 19.829050000000002], [45.28154000000001, 19.904310000000002], [45.21266000000001, 20.066270000000003], [45.142520000000005, 20.085060000000002], [45.028760000000005, 20.18871], [44.936890000000005, 20.292160000000003], [44.88843000000001, 20.29194], [44.85013000000001, 20.24905], [44.784850000000006, 20.261560000000003], [44.73002, 20.34327], [44.715540000000004, 20.396240000000002], [44.717290000000006, 20.50637], [44.709590000000006, 20.567220000000002], [44.67385, 20.596200000000003], [44.595330000000004, 20.639490000000002], [44.56662, 20.65921], [44.56851, 20.701030000000003], [44.58012, 20.796560000000003], [44.574290000000005, 20.9079], [44.58326, 20.95745], [44.55783, 20.983590000000003], [44.50712, 21.019560000000002], [44.44899, 21.045540000000003], [44.325010000000006, 21.09065], [44.248340000000006, 21.114210000000003], [44.1602, 21.10798], [44.007740000000005, 21.26969], [43.9742, 21.292460000000002], [43.9508, 21.37357], [43.890820000000005, 21.39751], [43.86834, 21.42755], [43.819250000000004, 21.427490000000002], [43.76863, 21.43524], [43.71116000000001, 21.53319], [43.63358, 21.56296], [43.60033000000001, 21.627640000000003], [43.534560000000006, 21.69555], [43.502660000000006, 21.75447], [43.43547, 21.800400000000003], [43.36012, 21.824080000000002], [43.3141, 21.80206], [43.199040000000004, 21.845940000000002], [43.055890000000005, 21.976360000000003], [42.9953, 22.02561], [42.928020000000004, 22.029390000000003], [42.875640000000004, 22.086070000000003], [42.84779, 22.129790000000003], [42.76567, 22.08519], [42.654830000000004, 22.056610000000003], [42.60255, 22.030240000000003], [42.57244, 21.975800000000003], [42.509260000000005, 21.883860000000002], [42.43769, 21.75054], [42.39609, 21.7188], [42.348130000000005, 21.722170000000002], [42.20738, 21.701500000000003], [42.11798, 21.7022], [42.032270000000004, 21.67924], [41.931580000000004, 21.62853], [41.86601, 21.694540000000003], [41.842060000000004, 21.701980000000002], [41.818650000000005, 21.67613], [41.78784, 21.70467], [41.784020000000005, 21.73552], [41.76165, 21.740460000000002], [41.72489, 21.80244], [41.66277, 21.832310000000003], [41.62268, 21.901580000000003], [41.55078, 21.97181], [41.550360000000005, 22.030980000000003], [41.51594, 22.08022], [41.48012000000001, 22.107110000000002], [41.422250000000005, 22.19178], [41.397330000000004, 22.290640000000003], [41.35530000000001, 22.356540000000003], [41.30599, 22.427110000000003], [41.218050000000005, 22.49114], [41.126490000000004, 22.55122], [41.096540000000005, 22.5726], [41.030620000000006, 22.60836], [40.954480000000004, 22.63343], [40.77295, 22.69753], [40.61083, 22.72961], [40.58035, 22.637340000000002], [40.52404000000001, 22.573990000000002], [40.36995, 22.60564], [40.29592, 22.542630000000003], [40.271100000000004, 22.52295], [40.23572, 22.537170000000003], [40.151610000000005, 22.541610000000002], [40.06891, 22.55477], [40.00574, 22.58312], [39.97343, 22.63802], [39.93744, 22.646800000000002], [39.899800000000006, 22.618720000000003], [39.850930000000005, 22.52211], [39.773160000000004, 22.485470000000003], [39.691320000000005, 22.4906], [39.61262, 22.501500000000004], [39.57672, 22.4828], [39.54437, 22.509500000000003], [39.49685, 22.594350000000002], [39.455650000000006, 22.67566], [39.40305, 22.745070000000002], [39.34651, 22.77952], [39.28996, 22.74389], [39.22283, 22.746350000000003], [39.09798, 22.867960000000004], [39.028830000000006, 22.91045], [38.97532, 22.88998], [38.91939, 22.84503], [38.892990000000005, 22.834560000000003], [38.889250000000004, 22.796860000000002], [38.900940000000006, 22.70175], [38.91707, 22.599610000000002], [38.898920000000004, 22.500410000000002], [38.87744, 22.46328], [38.83673, 22.478640000000002], [38.8016, 22.50439], [38.802870000000006, 22.54839], [38.80941, 22.635060000000003], [38.766290000000005, 22.830650000000002], [38.74398, 22.97932], [38.739200000000004, 23.028060000000004], [38.71088, 23.056060000000002], [38.63485, 23.087100000000003], [38.617490000000004, 23.176910000000003], [38.569280000000006, 23.19226], [38.50338, 23.16391], [38.46168, 23.163800000000002], [38.449740000000006, 23.20747], [38.39925, 23.22811], [38.36712, 23.30264], [38.37404, 23.513240000000003], [38.28708, 23.67855], [38.225910000000006, 23.84956], [38.15204000000001, 23.85396], [38.093230000000005, 23.79239], [38.03515, 23.73175], [38.008190000000006, 23.7145], [37.98516, 23.721700000000002], [37.98373, 23.72821]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(map_95f9ff089942e4d2a5e4fe6d2ca2f779);
+        
+    
+            poly_line_2b1a3d50b08132a507f4539638ab1587.bindTooltip(
+                `<div>
+                     Route: PED → TWKZB, 30,000 units
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_8270a2f2b234d489768faaf89688886c = L.polyline(
+                [[50.02901000000001, 15.808980000000002], [49.96922000000001, 15.798560000000002], [49.92418000000001, 15.828170000000002], [49.882070000000006, 15.819590000000002], [49.777640000000005, 15.81661], [49.69953, 15.8145], [49.66104000000001, 15.902260000000002], [49.554680000000005, 15.950560000000001], [49.507290000000005, 15.983170000000001], [49.462390000000006, 15.964570000000002], [49.41626, 15.956540000000002], [49.368590000000005, 15.973540000000002], [49.271480000000004, 16.2562], [49.18920000000001, 16.445140000000002], [49.16140000000001, 16.58235], [49.116730000000004, 16.647840000000002], [49.00318000000001, 16.68759], [48.861450000000005, 16.835], [48.76764000000001, 16.94031], [48.674240000000005, 16.98807], [48.438750000000006, 17.04294], [48.265660000000004, 17.00906], [48.162490000000005, 17.07515], [48.10660000000001, 17.08916], [48.08225, 17.099970000000003], [48.02239, 17.16747], [47.91064, 17.18192], [47.7884, 17.331000000000003], [47.65722, 17.59174], [47.646710000000006, 17.706870000000002], [47.68618000000001, 17.80471], [47.67578, 18.056810000000002], [47.63597, 18.238210000000002], [47.58429, 18.406470000000002], [47.53905, 18.499740000000003], [47.494020000000006, 18.569660000000002], [47.5108, 18.653160000000003], [47.47782, 18.84685], [47.41902, 18.950120000000002], [47.370760000000004, 19.09392], [47.350530000000006, 19.204340000000002], [47.21311, 19.41174], [47.049640000000004, 19.555870000000002], [46.969660000000005, 19.61438], [46.91127, 19.61455], [46.70895, 19.798530000000003], [46.55051, 19.883830000000003], [46.368, 19.99958], [46.28275000000001, 20.04127], [46.177530000000004, 19.98081], [46.121700000000004, 19.81333], [46.03914, 19.742630000000002], [45.90475000000001, 19.69931], [45.739990000000006, 19.703100000000003], [45.6565, 19.72399], [45.568870000000004, 19.72069], [45.36551, 19.75174], [45.306700000000006, 19.829050000000002], [45.28154000000001, 19.904310000000002], [45.21266000000001, 20.066270000000003], [45.142520000000005, 20.085060000000002], [45.028760000000005, 20.18871], [44.936890000000005, 20.292160000000003], [44.88843000000001, 20.29194], [44.85013000000001, 20.24905], [44.784850000000006, 20.261560000000003], [44.715540000000004, 20.396240000000002], [44.717290000000006, 20.50637], [44.67385, 20.596200000000003], [44.595330000000004, 20.639490000000002], [44.56851, 20.701030000000003], [44.58012, 20.796560000000003], [44.574290000000005, 20.9079], [44.58326, 20.95745], [44.55783, 20.983590000000003], [44.50712, 21.019560000000002], [44.44899, 21.045540000000003], [44.325010000000006, 21.09065], [44.1602, 21.10798], [44.007740000000005, 21.26969], [43.9508, 21.37357], [43.86834, 21.42755], [43.76863, 21.43524], [43.71116000000001, 21.53319], [43.63358, 21.56296], [43.534560000000006, 21.69555], [43.43547, 21.800400000000003], [43.361740000000005, 21.8216], [43.342270000000006, 21.893900000000002], [43.30107, 22.045830000000002], [43.285120000000006, 22.12261], [43.25381, 22.20069], [43.21914, 22.41241], [43.21439, 22.52699], [43.19706, 22.560470000000002], [43.134310000000006, 22.5716], [43.02501, 22.725540000000002], [42.99644000000001, 22.835910000000002], [42.92248, 22.93682], [42.82473, 23.100510000000003], [42.761500000000005, 23.218560000000004], [42.758720000000004, 23.266370000000002], [42.750530000000005, 23.354200000000002], [42.70740000000001, 23.442020000000003], [42.63546, 23.44863], [42.62545, 23.506770000000003], [42.59268, 23.620690000000003], [42.448240000000006, 23.845920000000003], [42.36347000000001, 23.89852], [42.32927, 23.98356], [42.33603, 24.07948], [42.245380000000004, 24.354730000000004], [42.204980000000006, 24.509], [42.20336, 24.673140000000004], [42.21589, 24.915020000000002], [42.19221, 25.211080000000003], [42.120070000000005, 25.38202], [42.02405, 25.572490000000002], [41.95271, 25.89852], [41.829240000000006, 26.14338], [41.71974, 26.34355], [41.70203, 26.495880000000003], [41.69955, 26.58266], [41.661530000000006, 26.637780000000003], [41.628040000000006, 26.805460000000004], [41.582440000000005, 26.951800000000002], [41.519270000000006, 27.097710000000003], [41.487840000000006, 27.23319], [41.45524, 27.346490000000003], [41.44232, 27.38744], [41.399710000000006, 27.388890000000004], [41.32511, 27.48393], [41.295080000000006, 27.538420000000002], [41.233180000000004, 27.533880000000003], [41.171600000000005, 27.536830000000002], [41.13983, 27.493160000000003], [41.06316, 27.506950000000003], [41.01874, 27.519230000000004], [40.9774, 27.483660000000004], [40.95159, 27.49011], [40.92250000000001, 27.56641], [40.65269000000001, 27.88312], [40.50531, 28.03649], [40.4168, 28.00335], [40.35271, 27.955560000000002], [40.349590000000006, 27.958280000000002], [40.33908, 27.987170000000003], [40.26948, 28.053120000000003], [40.15925, 28.094040000000003], [40.09779, 28.14421], [40.018820000000005, 28.166010000000004], [39.96548000000001, 28.157950000000003], [39.81120000000001, 28.049680000000002], [39.75744, 27.970670000000002], [39.719680000000004, 27.815240000000003], [39.62429, 27.703820000000004], [39.54341, 27.6777], [39.45478000000001, 27.636930000000003], [39.359, 27.628660000000004], [39.29016, 27.59765], [39.22986, 27.594610000000003], [39.149770000000004, 27.6948], [39.008900000000004, 27.74509], [38.91114, 27.681030000000003], [38.78795, 27.65744], [38.660720000000005, 27.647980000000004], [38.62158, 27.668010000000002], [38.552640000000004, 27.647530000000003], [38.46585, 27.55703], [38.4684, 27.32806], [38.444210000000005, 27.219430000000003], [38.34886, 27.233390000000004], [38.28858, 27.22595], [38.215410000000006, 27.266060000000003], [38.063280000000006, 27.417630000000003], [37.99051, 27.504330000000003], [37.88993, 27.562960000000004], [37.85669, 27.557330000000004], [37.830450000000006, 27.499900000000004], [37.774800000000006, 27.443060000000003], [37.718700000000005, 27.387520000000002], [37.494200000000006, 27.339760000000002], [37.479310000000005, 27.40856], [37.473000000000006, 27.486250000000002], [37.431850000000004, 27.556030000000003], [37.33914, 27.729840000000003], [37.268600000000006, 27.733870000000003], [37.22704, 27.66906], [37.13763, 27.58263], [37.097010000000004, 27.495030000000003], [37.0279, 27.442040000000002], [36.912060000000004, 27.30618], [36.89625, 27.32287], [36.880030000000005, 27.37245], [36.839620000000004, 27.360210000000002], [36.77047, 27.2846], [36.698190000000004, 27.21422], [36.622800000000005, 27.150890000000004], [36.63566, 27.221600000000002], [36.49756, 27.365900000000003], [36.46602, 27.406200000000002], [36.42653, 27.395550000000004], [36.4102, 27.476080000000003], [36.267160000000004, 27.61766], [36.198730000000005, 27.618700000000004], [36.122620000000005, 27.557760000000002], [35.98178, 27.41261], [35.83043, 27.283540000000002], [35.754490000000004, 27.186600000000002], [35.773390000000006, 27.18061]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(map_95f9ff089942e4d2a5e4fe6d2ca2f779);
+        
+    
+            poly_line_8270a2f2b234d489768faaf89688886c.bindTooltip(
+                `<div>
+                     Route: PED → VWDRE, 6,000 units
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_61735ecdb740cc70bf951fb4d3ce818b = L.polyline(
+                [[50.02901000000001, 15.808980000000002], [50.032630000000005, 15.800480000000002], [50.03219000000001, 15.79409], [50.032070000000004, 15.76885], [50.03338, 15.7513], [50.0392, 15.745490000000002], [50.048230000000004, 15.743350000000001], [50.0602, 15.748550000000002], [50.072340000000004, 15.75341], [50.087520000000005, 15.752480000000002], [50.10132, 15.767450000000002], [50.111450000000005, 15.78808], [50.130860000000006, 15.786590000000002], [50.138380000000005, 15.78945], [50.14020000000001, 15.789470000000001], [50.141220000000004, 15.76837], [50.15202000000001, 15.739810000000002], [50.14171, 15.7139], [50.135940000000005, 15.67575], [50.137910000000005, 15.631170000000001], [50.129400000000004, 15.5905], [50.131240000000005, 15.555970000000002], [50.13584, 15.520890000000001], [50.129340000000006, 15.442710000000002], [50.127770000000005, 15.407110000000001], [50.12905000000001, 15.36842], [50.12912000000001, 15.32196], [50.121550000000006, 15.28715], [50.11686, 15.19861], [50.120650000000005, 15.100030000000002], [50.122910000000005, 15.04446], [50.119800000000005, 14.99121], [50.116200000000006, 14.96273], [50.119670000000006, 14.940520000000001], [50.128370000000004, 14.893650000000001], [50.135670000000005, 14.853100000000001], [50.133990000000004, 14.813500000000001], [50.12998, 14.750150000000001], [50.115520000000004, 14.66309], [50.098800000000004, 14.601280000000001], [50.101350000000004, 14.59045], [50.09854000000001, 14.590890000000002], [50.08581, 14.594370000000001], [50.07645, 14.588260000000002], [50.077600000000004, 14.551400000000001], [50.06504, 14.51776], [50.059090000000005, 14.48624], [50.057770000000005, 14.479800000000001], [50.05203, 14.479220000000002], [50.04712000000001, 14.47174], [50.041470000000004, 14.4707], [50.03797, 14.454130000000001], [50.0332, 14.437500000000002], [50.03284000000001, 14.410070000000001], [50.040910000000004, 14.40656], [50.038160000000005, 14.402190000000001], [50.036410000000004, 14.38638], [50.02863000000001, 14.3785], [50.026520000000005, 14.363240000000001], [50.01822000000001, 14.346020000000001], [50.01587000000001, 14.339760000000002], [50.020390000000006, 14.33402], [50.024280000000005, 14.31258], [50.030260000000006, 14.28503], [50.037800000000004, 14.27209], [50.049290000000006, 14.274610000000001], [50.05044, 14.272580000000001], [50.036300000000004, 14.220340000000002], [50.008120000000005, 14.177980000000002], [49.992050000000006, 14.156630000000002], [49.981820000000006, 14.132390000000001], [49.973560000000006, 14.10556], [49.963350000000005, 14.088280000000001], [49.94704, 14.0371], [49.93104, 14.016440000000001], [49.916180000000004, 13.996150000000002], [49.90543, 13.96887], [49.89146, 13.935590000000001], [49.875330000000005, 13.90623], [49.85604000000001, 13.875000000000002], [49.84071, 13.816540000000002], [49.83133, 13.780850000000001], [49.806270000000005, 13.75674], [49.78530000000001, 13.71662], [49.781180000000006, 13.688170000000001], [49.766380000000005, 13.646700000000001], [49.758500000000005, 13.626470000000001], [49.75294, 13.58026], [49.74054, 13.5357], [49.7334, 13.50406], [49.724180000000004, 13.4678], [49.71199000000001, 13.445120000000001], [49.701800000000006, 13.43265], [49.68621, 13.42744], [49.681470000000004, 13.398620000000001], [49.684160000000006, 13.3558], [49.677420000000005, 13.327390000000001], [49.67962000000001, 13.307860000000002], [49.698170000000005, 13.292610000000002], [49.7096, 13.277330000000001], [49.709880000000005, 13.246410000000001], [49.70192, 13.191930000000001], [49.71284000000001, 13.164850000000001], [49.71866000000001, 13.123780000000002], [49.72321, 13.096480000000001], [49.71913000000001, 13.07276], [49.70749000000001, 13.045890000000002], [49.706630000000004, 13.012480000000002], [49.7036, 12.97545], [49.71636, 12.923950000000001], [49.7222, 12.895650000000002], [49.73859, 12.855410000000001], [49.751470000000005, 12.822750000000001], [49.748380000000004, 12.788760000000002], [49.73966, 12.743060000000002], [49.72885, 12.724950000000002], [49.71273, 12.707590000000001], [49.696630000000006, 12.681470000000001], [49.68028, 12.636360000000002], [49.678360000000005, 12.604210000000002], [49.66653, 12.58364], [49.65744, 12.545660000000002], [49.645520000000005, 12.52982], [49.63553, 12.513200000000001], [49.631440000000005, 12.5036], [49.634350000000005, 12.48863], [49.633950000000006, 12.472460000000002], [49.6304, 12.449250000000001], [49.61133, 12.39376], [49.61816, 12.371120000000001], [49.614790000000006, 12.343630000000001], [49.61162, 12.33267], [49.60195, 12.32341], [49.59454, 12.311350000000001], [49.589510000000004, 12.290310000000002], [49.57770000000001, 12.274740000000001], [49.56548, 12.25125], [49.56819, 12.219140000000001], [49.557280000000006, 12.199230000000002], [49.53737, 12.19204], [49.52512, 12.178500000000001], [49.51869000000001, 12.16154], [49.511070000000004, 12.172460000000001], [49.49425, 12.18861], [49.46755, 12.19448], [49.443250000000006, 12.18804], [49.413560000000004, 12.16501], [49.40178, 12.161740000000002], [49.392970000000005, 12.1523], [49.37914000000001, 12.15018], [49.33178, 12.15193], [49.31703, 12.15432], [49.301080000000006, 12.1499], [49.27749000000001, 12.131960000000001], [49.266000000000005, 12.123220000000002], [49.25166, 12.126690000000002], [49.24193, 12.132280000000002], [49.229670000000006, 12.131380000000002], [49.20841, 12.11841], [49.19995, 12.115340000000002], [49.1916, 12.11991], [49.183640000000004, 12.123660000000001], [49.17712, 12.12043], [49.15632, 12.10984], [49.141310000000004, 12.10527], [49.127950000000006, 12.108910000000002], [49.105900000000005, 12.09734], [49.09736, 12.092810000000002], [49.088800000000006, 12.097140000000001], [49.08048, 12.100900000000001], [49.0713, 12.095040000000001], [49.049800000000005, 12.09232], [49.04166000000001, 12.09571], [49.03575000000001, 12.08618], [49.02094, 12.068790000000002], [49.00421, 12.061630000000001], [48.98266, 12.061850000000002], [48.968520000000005, 12.07563], [48.965360000000004, 12.088750000000001], [48.958380000000005, 12.092810000000002], [48.93047000000001, 12.088700000000001], [48.90907000000001, 12.085680000000002], [48.88702000000001, 12.071200000000001], [48.86565, 12.02876], [48.851150000000004, 12.009960000000001], [48.84174, 12.003190000000002], [48.838550000000005, 11.991190000000001], [48.82701, 11.960090000000001], [48.815310000000004, 11.946700000000002], [48.778690000000005, 11.90112], [48.75985000000001, 11.878630000000001], [48.744170000000004, 11.8594], [48.72912, 11.84248], [48.718120000000006, 11.81812], [48.703300000000006, 11.77096], [48.69548, 11.74759], [48.68813, 11.73642], [48.67897000000001, 11.733960000000002], [48.66344, 11.732420000000001], [48.653040000000004, 11.71826], [48.636480000000006, 11.709660000000001], [48.61968, 11.69904], [48.611880000000006, 11.67608], [48.606460000000006, 11.652920000000002], [48.59404000000001, 11.623660000000001], [48.59035, 11.605060000000002], [48.580760000000005, 11.59309], [48.58044, 11.589120000000001], [48.573780000000006, 11.59252], [48.55677000000001, 11.588420000000001], [48.54684, 11.59364], [48.532830000000004, 11.59384], [48.521100000000004, 11.583150000000002], [48.51015, 11.584620000000001], [48.495380000000004, 11.594710000000001], [48.483540000000005, 11.588980000000001], [48.472730000000006, 11.5853], [48.460620000000006, 11.590000000000002], [48.436910000000005, 11.589160000000001], [48.40476, 11.58965], [48.38821, 11.597130000000002], [48.358360000000005, 11.59669], [48.334, 11.610940000000001], [48.286460000000005, 11.63807], [48.268800000000006, 11.64478], [48.254160000000006, 11.645750000000001], [48.245920000000005, 11.64043], [48.240030000000004, 11.64553], [48.237590000000004, 11.678], [48.226800000000004, 11.671550000000002], [48.224590000000006, 11.671750000000001]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(map_95f9ff089942e4d2a5e4fe6d2ca2f779);
+        
+    
+            poly_line_61735ecdb740cc70bf951fb4d3ce818b.bindTooltip(
+                `<div>
+                     Route: PED → XGUTS, 16,500 units
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_4a5b7f211f46765d01d559f1094ea4da = L.polyline(
+                [[56.89600000000001, 24.045840000000002], [56.89087000000001, 24.045890000000004], [56.89011000000001, 24.049110000000002], [56.88982000000001, 24.053800000000003], [56.88765000000001, 24.066450000000003], [56.887840000000004, 24.06961], [56.887660000000004, 24.070770000000003], [56.88441, 24.069910000000004], [56.88203000000001, 24.068790000000003], [56.87791000000001, 24.06689], [56.87315, 24.06465], [56.86543, 24.061120000000003], [56.85412, 24.05533], [56.84481, 24.04587], [56.840900000000005, 24.040550000000003], [56.83852, 24.03723], [56.83619, 24.033970000000004], [56.83536, 24.031830000000003], [56.837030000000006, 24.03104], [56.837500000000006, 24.031200000000002], [56.834500000000006, 24.038380000000004], [56.82912, 24.05242], [56.82621, 24.0621], [56.82184, 24.084310000000002], [56.814440000000005, 24.140390000000004], [56.81018, 24.172780000000003], [56.808620000000005, 24.19234], [56.805110000000006, 24.199510000000004], [56.79531000000001, 24.21018], [56.78971000000001, 24.2175], [56.78618, 24.22472], [56.78132000000001, 24.23598], [56.77817, 24.239970000000003], [56.77223000000001, 24.24276], [56.75795000000001, 24.247200000000003], [56.74213, 24.251530000000002], [56.73312000000001, 24.254130000000004], [56.727410000000006, 24.25428], [56.722660000000005, 24.253130000000002], [56.71804, 24.25024], [56.71293000000001, 24.24764], [56.70091000000001, 24.244000000000003], [56.663920000000005, 24.233120000000003], [56.64457, 24.227590000000003], [56.63541000000001, 24.224890000000002], [56.6285, 24.221950000000003], [56.614700000000006, 24.21583], [56.60848000000001, 24.212270000000004], [56.605250000000005, 24.208260000000003], [56.59881000000001, 24.199700000000004], [56.59597, 24.192970000000003], [56.59107, 24.18974], [56.58225, 24.18212], [56.57735, 24.17827], [56.570100000000004, 24.17573], [56.560100000000006, 24.173350000000003], [56.550090000000004, 24.173330000000004], [56.539950000000005, 24.17303], [56.53530000000001, 24.171850000000003], [56.52892000000001, 24.17049], [56.52266, 24.172220000000003], [56.516040000000004, 24.172970000000003], [56.509080000000004, 24.172680000000003], [56.49456000000001, 24.175770000000004], [56.48494, 24.17732], [56.47834, 24.173170000000002], [56.46755, 24.16374], [56.46108, 24.16243], [56.45291, 24.163710000000002], [56.4474, 24.164610000000003], [56.44315, 24.167620000000003], [56.43417, 24.177740000000004], [56.42537000000001, 24.18342], [56.42389000000001, 24.183930000000004], [56.419920000000005, 24.18326], [56.41745, 24.1823], [56.41311, 24.18315], [56.40782000000001, 24.187040000000003], [56.406980000000004, 24.187130000000003], [56.40370000000001, 24.215110000000003], [56.402240000000006, 24.22286], [56.398050000000005, 24.232650000000003], [56.392340000000004, 24.244280000000003], [56.38848, 24.251790000000003], [56.382830000000006, 24.258210000000002], [56.370920000000005, 24.271870000000003], [56.362390000000005, 24.281350000000003], [56.34902, 24.288390000000003], [56.337450000000004, 24.2952], [56.33194, 24.29988], [56.328700000000005, 24.304560000000002], [56.323660000000004, 24.31303], [56.31991000000001, 24.320120000000003], [56.312310000000004, 24.333800000000004], [56.30729, 24.33941], [56.29603, 24.346500000000002], [56.28974, 24.354960000000002], [56.285070000000005, 24.35857], [56.27563000000001, 24.36483], [56.26894000000001, 24.370120000000004], [56.25419, 24.39103], [56.24414, 24.40877], [56.240030000000004, 24.41587], [56.235440000000004, 24.420830000000002], [56.231120000000004, 24.423060000000003], [56.226800000000004, 24.42366], [56.21392, 24.42548], [56.20873, 24.426270000000002], [56.200320000000005, 24.42902], [56.18663000000001, 24.434680000000004], [56.182370000000006, 24.435830000000003], [56.17714, 24.438910000000003], [56.162600000000005, 24.45258], [56.147740000000006, 24.462470000000003], [56.129000000000005, 24.46826], [56.11907000000001, 24.470570000000002], [56.11560000000001, 24.46977], [56.10846000000001, 24.464540000000003], [56.08238000000001, 24.441850000000002], [56.07889, 24.439400000000003], [56.073800000000006, 24.43821], [56.07103000000001, 24.437070000000002], [56.06873, 24.434500000000003], [56.06351000000001, 24.426800000000004], [56.05706000000001, 24.415160000000004], [56.05512, 24.40941], [56.04869000000001, 24.39319], [56.04446000000001, 24.38286], [56.041410000000006, 24.378310000000003], [56.0337, 24.37142], [56.017990000000005, 24.35994], [55.999370000000006, 24.34655], [55.99282, 24.34362], [55.98272000000001, 24.34233], [55.977540000000005, 24.341680000000004], [55.94962, 24.33817], [55.93177000000001, 24.33601], [55.92578, 24.33517], [55.91655000000001, 24.335020000000004], [55.898990000000005, 24.339270000000003], [55.86394000000001, 24.34784], [55.849230000000006, 24.3519], [55.83279, 24.363200000000003], [55.828660000000006, 24.365930000000002], [55.820330000000006, 24.36736], [55.808130000000006, 24.368270000000003], [55.803900000000006, 24.367810000000002], [55.802170000000004, 24.364030000000003], [55.803090000000005, 24.353450000000002], [55.803850000000004, 24.336800000000004], [55.80149, 24.32721], [55.79491, 24.31708], [55.78558, 24.30984], [55.772940000000006, 24.30168], [55.769450000000006, 24.297130000000003], [55.76185, 24.286790000000003], [55.75526000000001, 24.280260000000002], [55.748340000000006, 24.277500000000003], [55.73987, 24.276650000000004], [55.730270000000004, 24.274510000000003], [55.722640000000006, 24.27062], [55.7158, 24.268880000000003], [55.70477, 24.27174], [55.69268, 24.276100000000003], [55.690020000000004, 24.27823], [55.68865, 24.280340000000002], [55.685010000000005, 24.286990000000003], [55.679730000000006, 24.302290000000003], [55.67454000000001, 24.33085], [55.67344000000001, 24.33538], [55.67085, 24.345000000000002], [55.668000000000006, 24.353340000000003], [55.66615, 24.357660000000003], [55.661750000000005, 24.360670000000002], [55.657500000000006, 24.358890000000002], [55.65572, 24.358110000000003], [55.64591000000001, 24.352880000000003], [55.635360000000006, 24.34795], [55.630210000000005, 24.34756], [55.61686, 24.34766], [55.60199000000001, 24.347240000000003], [55.590990000000005, 24.3427], [55.56734, 24.33276], [55.52252000000001, 24.31396], [55.50007000000001, 24.3045], [55.47838, 24.2954], [55.46885, 24.289600000000004], [55.463260000000005, 24.282420000000002], [55.456810000000004, 24.27222], [55.43666, 24.240440000000003], [55.42329, 24.219420000000003], [55.41189000000001, 24.201420000000002], [55.40805, 24.195380000000004], [55.403400000000005, 24.19], [55.383, 24.17574], [55.363550000000004, 24.162480000000002], [55.34872000000001, 24.14911], [55.33621, 24.140050000000002], [55.326510000000006, 24.13116], [55.312780000000004, 24.106920000000002], [55.29702, 24.07844], [55.292410000000004, 24.070390000000003], [55.290040000000005, 24.06828], [55.271300000000004, 24.066950000000002], [55.25280000000001, 24.065890000000003], [55.248050000000006, 24.064390000000003], [55.245490000000004, 24.062540000000002], [55.23852, 24.05459], [55.21958000000001, 24.032610000000002], [55.19389, 24.01275], [55.17528000000001, 23.99997], [55.16010000000001, 23.991840000000003], [55.139160000000004, 23.97464], [55.126360000000005, 23.951870000000003], [55.12142000000001, 23.946240000000003], [55.108340000000005, 23.93438], [55.09760000000001, 23.924660000000003], [55.087860000000006, 23.913760000000003], [55.08133, 23.90293], [55.076220000000006, 23.89216], [55.06255, 23.870220000000003], [55.05659000000001, 23.854840000000003], [55.05055, 23.832880000000003], [55.04889000000001, 23.821170000000002], [55.04791, 23.81933], [55.046350000000004, 23.819070000000004], [55.04379, 23.82149], [55.03647, 23.824790000000004], [55.0082, 23.837960000000002], [54.99468, 23.84421], [54.98012000000001, 23.850980000000003], [54.96895000000001, 23.857830000000003], [54.951420000000006, 23.87139], [54.9401, 23.88071], [54.93806000000001, 23.882830000000002], [54.935590000000005, 23.883300000000002], [54.93068, 23.886960000000002], [54.92441, 23.892280000000003], [54.92250000000001, 23.893520000000002], [54.917680000000004, 23.89007], [54.914770000000004, 23.888180000000002], [54.91180000000001, 23.888530000000003], [54.90699000000001, 23.88351], [54.90608, 23.881500000000003], [54.90543, 23.884330000000002], [54.90305000000001, 23.89104], [54.901900000000005, 23.892860000000002], [54.90122, 23.89195], [54.900360000000006, 23.892670000000003], [54.89898, 23.89271], [54.89847, 23.89421], [54.897960000000005, 23.90033], [54.89824, 23.90493]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(map_95f9ff089942e4d2a5e4fe6d2ca2f779);
+        
+    
+            poly_line_4a5b7f211f46765d01d559f1094ea4da.bindTooltip(
+                `<div>
+                     Route: RIX → GXEQH, 13,000 units
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            ant_path_92662f64da9287040a96f64cc4ab8741 = L.polyline.antPath(
+              [[56.896, 24.046], [53.6736529, 10.2358999]],
+              {"bubblingMouseEvents": true, "color": "red", "dashArray": [10, 20], "dashOffset": null, "delay": 1000, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "hardwareAcceleration": false, "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 0.5, "paused": false, "pulseColor": "#FFFFFF", "reverse": false, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+        ).addTo(map_95f9ff089942e4d2a5e4fe6d2ca2f779);
+        
+    
+            ant_path_92662f64da9287040a96f64cc4ab8741.bindTooltip(
+                `<div>
+                     Air Route: RIX → KSJER, 22,000 units
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_212394cfa9882b6cf02ab71adec84aa9 = L.polyline(
+                [[56.89600000000001, 24.045840000000002], [56.90809, 24.059340000000002], [56.921330000000005, 24.07299], [56.919430000000006, 24.084500000000002], [56.9245, 24.10697], [56.93688, 24.126780000000004], [56.922450000000005, 24.16834], [56.931900000000006, 24.19947], [56.94377000000001, 24.24406], [56.96837000000001, 24.252540000000003], [56.98541, 24.24811], [56.99611, 24.264000000000003], [57.01041000000001, 24.307620000000004], [57.02286, 24.3166], [57.039350000000006, 24.315520000000003], [57.05695000000001, 24.32128], [57.08852, 24.31371], [57.128750000000004, 24.33029], [57.16478000000001, 24.34505], [57.189370000000004, 24.347700000000003], [57.228320000000004, 24.42069], [57.26925000000001, 24.437630000000002], [57.28649000000001, 24.4337], [57.32544000000001, 24.45427], [57.382830000000006, 24.43045], [57.493880000000004, 24.431490000000004], [57.564330000000005, 24.434030000000003], [57.592780000000005, 24.416990000000002], [57.629340000000006, 24.381470000000004], [57.661210000000004, 24.379050000000003], [57.68621, 24.381970000000003], [57.703210000000006, 24.3713], [57.732980000000005, 24.367330000000003], [57.75574, 24.361670000000004], [57.80950000000001, 24.347990000000003], [57.836200000000005, 24.346110000000003], [57.86016000000001, 24.36794], [57.879450000000006, 24.38728], [57.934830000000005, 24.428490000000004], [58.025710000000004, 24.50202], [58.072250000000004, 24.511380000000003], [58.093880000000006, 24.507820000000002], [58.14284000000001, 24.50618], [58.16456, 24.497200000000003], [58.22070000000001, 24.489600000000003], [58.2779, 24.566280000000003], [58.30142000000001, 24.606540000000003], [58.34734, 24.584740000000004], [58.36410000000001, 24.561560000000004], [58.38237, 24.55667], [58.40384, 24.50318], [58.416920000000005, 24.494370000000004], [58.442080000000004, 24.499060000000004], [58.470760000000006, 24.52464], [58.51446000000001, 24.554440000000003], [58.52537, 24.55901], [58.54234, 24.542600000000004], [58.565940000000005, 24.514450000000004], [58.590650000000004, 24.51225], [58.624190000000006, 24.50832], [58.66865000000001, 24.453860000000002], [58.69731, 24.430020000000003], [58.740030000000004, 24.423350000000003], [58.80794, 24.412650000000003], [58.840270000000004, 24.423800000000004], [58.88528, 24.45137], [58.949380000000005, 24.467670000000002], [58.971830000000004, 24.47578], [58.998560000000005, 24.462880000000002], [59.031290000000006, 24.444540000000003], [59.05243000000001, 24.445500000000003], [59.08162000000001, 24.457320000000003], [59.13125, 24.48016], [59.14867, 24.50176], [59.18563, 24.50053], [59.231930000000006, 24.492590000000003], [59.249790000000004, 24.49818], [59.31734, 24.58132], [59.348940000000006, 24.6263], [59.364630000000005, 24.635640000000002], [59.38524, 24.71094], [59.415510000000005, 24.740000000000002], [59.43563, 24.750200000000003], [59.44431, 24.78111], [59.44415000000001, 24.767740000000003], [59.44971, 24.777820000000002], [59.492830000000005, 24.763180000000002], [59.615210000000005, 24.684800000000003], [59.80248, 24.83886], [60.003730000000004, 24.887490000000003], [60.138470000000005, 24.90828], [60.15178, 24.92075], [60.15353, 24.92086], [60.15529000000001, 24.921940000000003], [60.15771, 24.921940000000003], [60.161750000000005, 24.92197], [60.167120000000004, 24.921380000000003], [60.17613000000001, 24.919950000000004], [60.18242000000001, 24.92961], [60.19267000000001, 24.95285], [60.212050000000005, 24.970000000000002], [60.22921, 25.014860000000002], [60.252590000000005, 25.06604], [60.29657, 25.095460000000003], [60.320330000000006, 25.113950000000003], [60.34378, 25.110730000000004], [60.391040000000004, 25.1216], [60.45555, 25.126520000000003], [60.47343000000001, 25.139480000000002], [60.498200000000004, 25.13603], [60.55252000000001, 25.18614], [60.580020000000005, 25.215690000000002], [60.59951, 25.250390000000003], [60.63396, 25.294420000000002], [60.6662, 25.33837], [60.69982, 25.404690000000002], [60.727090000000004, 25.44262], [60.760220000000004, 25.462370000000004], [60.794720000000005, 25.49198], [60.82551000000001, 25.52473], [60.884930000000004, 25.58792], [60.92396000000001, 25.629730000000002], [60.95205000000001, 25.692230000000002], [60.98013, 25.731710000000003], [60.99671000000001, 25.783040000000003], [61.011070000000004, 25.818890000000003], [61.028940000000006, 25.835390000000004], [61.05776, 25.85939], [61.076460000000004, 25.888520000000003], [61.141760000000005, 25.958360000000003], [61.16487000000001, 25.99752], [61.192660000000004, 26.002360000000003], [61.20573, 26.00251], [61.221320000000006, 26.019940000000002], [61.23984000000001, 26.048260000000003], [61.27754, 26.067870000000003], [61.291050000000006, 26.076020000000003], [61.30986000000001, 26.04588], [61.343920000000004, 26.0437], [61.37903000000001, 26.05092], [61.39031000000001, 26.05197], [61.42056, 26.02709], [61.441880000000005, 25.993610000000004], [61.46591000000001, 25.98056], [61.49530000000001, 25.979380000000003], [61.51921000000001, 25.998970000000003], [61.54327000000001, 26.00787], [61.557590000000005, 26.005950000000002], [61.58261, 26.00842], [61.62952000000001, 26.013070000000003], [61.66767000000001, 26.037490000000002], [61.69068000000001, 26.058840000000004], [61.70365, 26.05882], [61.731950000000005, 26.095380000000002], [61.75797000000001, 26.107950000000002], [61.808370000000004, 26.09241], [61.84852000000001, 26.10019], [61.91805000000001, 26.11689], [61.947390000000006, 26.109430000000003], [61.96484, 26.08595], [61.99611, 26.056800000000003], [62.021770000000004, 26.047320000000003], [62.04693, 26.05167], [62.07739000000001, 26.03553], [62.103010000000005, 25.982680000000002], [62.14659, 25.897750000000002], [62.17663, 25.90669], [62.20421, 25.890420000000002], [62.232000000000006, 25.89908], [62.245630000000006, 25.871460000000003], [62.24049000000001, 25.798550000000002], [62.255430000000004, 25.763050000000003], [62.26104000000001, 25.74321], [62.27845000000001, 25.72821], [62.308800000000005, 25.707800000000002], [62.33315, 25.701], [62.35163000000001, 25.701230000000002], [62.40156, 25.70061], [62.444320000000005, 25.68136], [62.45984000000001, 25.67144], [62.48698, 25.67697], [62.52778000000001, 25.683950000000003], [62.573820000000005, 25.67622], [62.586450000000006, 25.695690000000003], [62.602880000000006, 25.68944], [62.63725, 25.685200000000002], [62.647110000000005, 25.71392], [62.66771000000001, 25.744970000000002], [62.692400000000006, 25.76592], [62.70956, 25.75908], [62.71894, 25.75241], [62.731860000000005, 25.766910000000003], [62.74846000000001, 25.7742], [62.772780000000004, 25.78103], [62.80688000000001, 25.80759], [62.81739, 25.80298], [62.82853000000001, 25.813720000000004], [62.878510000000006, 25.81023], [62.91226, 25.818510000000003], [62.92643, 25.810940000000002], [62.947500000000005, 25.82045], [62.973150000000004, 25.818910000000002], [63.01328, 25.822930000000003], [63.040130000000005, 25.81304], [63.06129000000001, 25.847420000000003], [63.072390000000006, 25.860730000000004], [63.08946, 25.859990000000003], [63.116820000000004, 25.795170000000002], [63.136320000000005, 25.768600000000003], [63.14464, 25.80232], [63.140980000000006, 25.837490000000003], [63.15044, 25.864670000000004], [63.162020000000005, 25.91543], [63.173640000000006, 25.941950000000002], [63.17033000000001, 25.978350000000002], [63.17503000000001, 26.020940000000003], [63.18054000000001, 26.028830000000003], [63.187430000000006, 26.025470000000002], [63.20092, 26.01414], [63.21329000000001, 25.999270000000003], [63.23149000000001, 25.964460000000003], [63.246610000000004, 25.919570000000004]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(map_95f9ff089942e4d2a5e4fe6d2ca2f779);
+        
+    
+            poly_line_212394cfa9882b6cf02ab71adec84aa9.bindTooltip(
+                `<div>
+                     Route: RIX → NAAVF, 500 units
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_4db0d026f97efc315582646c5c0474c2 = L.polyline(
+                [[56.89600000000001, 24.045840000000002], [56.834500000000006, 24.038380000000004], [56.79531000000001, 24.21018], [56.722660000000005, 24.253130000000002], [56.605250000000005, 24.208260000000003], [56.49456000000001, 24.175770000000004], [56.406980000000004, 24.187130000000003], [56.235440000000004, 24.420830000000002], [56.162600000000005, 24.45258], [56.08238000000001, 24.441850000000002], [55.977540000000005, 24.341680000000004], [55.802170000000004, 24.364030000000003], [55.730270000000004, 24.274510000000003], [55.65572, 24.358110000000003], [55.50007000000001, 24.3045], [55.17528000000001, 23.99997], [55.05055, 23.832880000000003], [54.939460000000004, 23.87646], [54.90442, 23.833830000000003], [54.84201, 23.84841], [54.79972000000001, 23.82674], [54.758390000000006, 23.74142], [54.684630000000006, 23.58566], [54.62601000000001, 23.420720000000003], [54.5786, 23.31099], [54.486900000000006, 23.22409], [54.38756000000001, 23.208280000000002], [54.317330000000005, 23.132440000000003], [54.189910000000005, 23.01225], [54.13387, 22.935840000000002], [54.12023000000001, 22.880540000000003], [54.07108, 22.88068], [54.0099, 22.86561], [53.96562, 22.779130000000002], [53.91564, 22.731620000000003], [53.842360000000006, 22.446140000000003], [53.727050000000006, 22.282850000000003], [53.631600000000006, 22.294970000000003], [53.59514000000001, 22.327350000000003], [53.57347000000001, 22.27898], [53.507940000000005, 22.239590000000003], [53.42553, 22.168470000000003], [53.27928000000001, 22.13501], [53.181160000000006, 21.977230000000002], [53.12724000000001, 22.014090000000003], [53.02, 21.93512], [52.90713, 21.87383], [52.82836, 21.917], [52.7188, 21.7051], [52.65419000000001, 21.56659], [52.575970000000005, 21.485860000000002], [52.42503000000001, 21.224570000000003], [52.34807000000001, 21.15745], [52.295500000000004, 21.01837], [52.20167000000001, 20.936700000000002], [52.07489, 20.77524], [51.937560000000005, 20.478260000000002], [51.77756, 20.27571], [51.607820000000004, 20.063260000000003], [51.45192, 19.76802], [51.417300000000004, 19.63689], [51.29422, 19.545640000000002], [51.03914, 19.341920000000002], [50.907830000000004, 19.206970000000002], [50.84702000000001, 19.040210000000002], [50.756130000000006, 19.02626], [50.69516, 19.056530000000002], [50.62939, 19.033610000000003], [50.50023, 19.05875], [50.40605000000001, 19.01924], [50.3721, 18.748530000000002], [50.18941, 18.70493], [50.06772, 18.66102], [49.995670000000004, 18.572300000000002], [49.92602, 18.38558], [49.83082, 18.21819], [49.787090000000006, 18.107860000000002], [49.699470000000005, 17.9797], [49.57661, 17.738100000000003], [49.54860000000001, 17.59896], [49.58308, 17.45026], [49.55525, 17.18765], [49.329100000000004, 17.05086], [49.20235, 16.90398], [49.185010000000005, 16.76028], [49.159620000000004, 16.63031], [49.074540000000006, 16.66114], [48.93126, 16.75195], [48.759330000000006, 16.94891], [48.568020000000004, 17.013270000000002], [48.250600000000006, 17.01228], [48.103660000000005, 17.09329], [48.01585000000001, 17.173450000000003], [47.900690000000004, 17.182760000000002], [47.64927, 17.60799], [47.6858, 17.8187], [47.67407, 18.07901], [47.57835, 18.414460000000002], [47.52971, 18.502200000000002], [47.508570000000006, 18.673650000000002], [47.47111, 18.859630000000003], [47.40823, 18.96412], [47.34396, 19.211720000000003], [47.19926, 19.42152], [47.037150000000004, 19.57076], [46.89482, 19.62114], [46.685520000000004, 19.816300000000002], [46.35074, 20.007920000000002], [46.24682000000001, 20.036800000000003], [46.16995000000001, 19.971680000000003], [46.11365000000001, 19.79972], [45.867160000000005, 19.699730000000002], [45.65008, 19.71996], [45.34337, 19.764470000000003], [45.19698, 20.07409], [45.00338000000001, 20.20307], [44.92425, 20.302690000000002], [44.886120000000005, 20.2851], [44.84056, 20.250100000000003], [44.76957, 20.27596], [44.71499, 20.40428], [44.71547, 20.518720000000002], [44.670930000000006, 20.6067], [44.579950000000004, 20.644630000000003], [44.583920000000006, 20.819170000000003], [44.57347, 20.923270000000002], [44.54663, 20.986680000000003], [44.437920000000005, 21.050140000000003], [44.243320000000004, 21.11711], [44.14815, 21.115620000000003], [44.079010000000004, 21.189040000000002], [43.997130000000006, 21.27145], [43.93616, 21.38963], [43.86621, 21.434030000000003], [43.75871, 21.439490000000003], [43.7032, 21.538710000000002], [43.62411, 21.568170000000002], [43.53027, 21.70511], [43.41707, 21.794490000000003], [43.302960000000006, 21.79885], [43.04536, 21.987820000000003], [42.920370000000005, 22.031640000000003], [42.873000000000005, 22.09054], [42.842220000000005, 22.131400000000003], [42.80239, 22.10394], [42.70982, 22.07214], [42.64302000000001, 22.05525], [42.56656, 21.96545], [42.429750000000006, 21.743360000000003], [42.019830000000006, 21.673550000000002], [41.91756, 21.63935], [41.86379, 21.69488], [41.81651, 21.67511], [41.65961, 21.835890000000003], [41.549310000000006, 21.979280000000003], [41.51102, 22.085040000000003], [41.47476, 22.112090000000002], [41.39376, 22.29324], [41.299130000000005, 22.42942], [41.063770000000005, 22.599140000000002], [40.916470000000004, 22.64957], [40.729620000000004, 22.713120000000004], [40.64613000000001, 22.71899], [40.599990000000005, 22.68063], [40.486360000000005, 22.566170000000003], [40.410630000000005, 22.59309], [40.32274, 22.57506], [40.268660000000004, 22.52449], [40.188120000000005, 22.55047], [40.0305, 22.5711], [39.934200000000004, 22.644270000000002], [39.81168, 22.506240000000002], [39.649640000000005, 22.50825], [39.57329, 22.48422], [39.521570000000004, 22.55871], [39.4208, 22.706280000000003], [39.37082, 22.77016], [39.31956, 22.758740000000003], [39.186240000000005, 22.775060000000003], [39.060080000000006, 22.88923], [38.995630000000006, 22.901020000000003], [38.943630000000006, 22.873260000000002], [38.891310000000004, 22.831570000000003], [38.89255, 22.7498], [38.903710000000004, 22.54182], [38.874590000000005, 22.460910000000002], [38.800160000000005, 22.507340000000003], [38.792660000000005, 22.67921], [38.74757, 22.86062], [38.739110000000004, 23.033], [38.618610000000004, 23.13914], [38.59487, 23.194750000000003], [38.539730000000006, 23.16982], [38.4581, 23.16458], [38.42239, 23.22171], [38.37733, 23.258850000000002], [38.36863, 23.362920000000003], [38.35614, 23.567700000000002], [38.263070000000006, 23.72409], [38.22945, 23.81114], [38.184450000000005, 23.852210000000003], [38.065830000000005, 23.752910000000004], [37.98373, 23.72821]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(map_95f9ff089942e4d2a5e4fe6d2ca2f779);
+        
+    
+            poly_line_4db0d026f97efc315582646c5c0474c2.bindTooltip(
+                `<div>
+                     Route: RIX → TWKZB, 9,500 units
+                 </div>`,
+                {"sticky": true}
+            );
+        
+    
+            var poly_line_be10698db31d3d8fb9457c816e772ab0 = L.polyline(
+                [[38.044000000000004, 23.799000000000003], [38.04411, 23.7985], [38.044180000000004, 23.79812], [38.04419, 23.798050000000003], [38.044230000000006, 23.79811], [38.044340000000005, 23.798280000000002], [38.044430000000006, 23.79841], [38.044500000000006, 23.7985], [38.044610000000006, 23.79858], [38.04489, 23.798000000000002], [38.04507, 23.797600000000003], [38.04477, 23.79748], [38.044320000000006, 23.797300000000003], [38.04415, 23.797200000000004], [38.04379, 23.79699], [38.0437, 23.796950000000002], [38.04363, 23.79716], [38.043440000000004, 23.797800000000002], [38.04325, 23.798440000000003], [38.042840000000005, 23.799750000000003], [38.04243, 23.80102], [38.0422, 23.801830000000002], [38.04211, 23.80204], [38.042010000000005, 23.80223], [38.04189, 23.802400000000002], [38.04175, 23.80254], [38.04164, 23.802590000000002], [38.041520000000006, 23.8026], [38.041410000000006, 23.802570000000003], [38.041180000000004, 23.802470000000003], [38.040710000000004, 23.80215], [38.04054, 23.80205], [38.040380000000006, 23.80195], [38.040290000000006, 23.801840000000002], [38.040060000000004, 23.801640000000003], [38.039880000000004, 23.80149], [38.039260000000006, 23.80104], [38.038790000000006, 23.800700000000003], [38.03844, 23.800420000000003], [38.03821000000001, 23.80017], [38.03808, 23.80001], [38.037580000000005, 23.79934], [38.03672, 23.798280000000002], [38.03643, 23.797900000000002], [38.036190000000005, 23.79755], [38.03605, 23.797400000000003], [38.0356, 23.79697], [38.035050000000005, 23.796490000000002], [38.0349, 23.796360000000004], [38.034800000000004, 23.796310000000002], [38.03473, 23.79632], [38.0347, 23.796290000000003], [38.03452, 23.796120000000002], [38.033930000000005, 23.7956], [38.033550000000005, 23.795250000000003], [38.033190000000005, 23.79493], [38.032590000000006, 23.794430000000002], [38.030620000000006, 23.79266], [38.02863, 23.790950000000002], [38.027570000000004, 23.790070000000004], [38.02722, 23.789810000000003], [38.026720000000005, 23.789610000000003], [38.0262, 23.789510000000003], [38.025580000000005, 23.78948], [38.0244, 23.7894], [38.02389, 23.789360000000002], [38.02333, 23.78937], [38.02279, 23.78938], [38.02235, 23.789340000000003], [38.021820000000005, 23.789230000000003], [38.02127, 23.789080000000002], [38.020920000000004, 23.788950000000003], [38.02033, 23.788690000000003], [38.01999, 23.78853], [38.01941, 23.788230000000002], [38.01908, 23.788050000000002], [38.01892, 23.78796], [38.01877, 23.787830000000003], [38.01849, 23.7876], [38.018330000000006, 23.787440000000004], [38.017830000000004, 23.786980000000003], [38.017320000000005, 23.786520000000003], [38.01634, 23.78565], [38.01579, 23.785140000000002], [38.01556, 23.784940000000002], [38.01527, 23.7847], [38.01491, 23.784360000000003], [38.01438, 23.783880000000003], [38.01339, 23.782970000000002], [38.012480000000004, 23.782190000000003], [38.01149, 23.781260000000003], [38.01043000000001, 23.780320000000003], [38.00958, 23.77953], [38.009100000000004, 23.779100000000003], [38.008590000000005, 23.778640000000003], [38.00771, 23.77786], [38.00695, 23.77719], [38.00654, 23.77682], [38.006130000000006, 23.776490000000003], [38.005190000000006, 23.775750000000002], [38.00441, 23.775170000000003], [38.00334, 23.774410000000003], [38.003040000000006, 23.77418], [38.002590000000005, 23.77381], [38.00245, 23.773670000000003], [38.002300000000005, 23.77353], [38.002190000000006, 23.773370000000003], [38.00207, 23.77325], [38.001780000000004, 23.77298], [38.00124, 23.7725], [38.000840000000004, 23.77214], [38.00027, 23.771620000000002], [37.99996, 23.77128], [37.999230000000004, 23.77032], [37.99895, 23.76997], [37.998520000000006, 23.76957], [37.99806, 23.769170000000003], [37.997620000000005, 23.76892], [37.996990000000004, 23.768610000000002], [37.99582, 23.768030000000003], [37.995380000000004, 23.767840000000003], [37.99503, 23.7677], [37.994460000000004, 23.76745], [37.99389, 23.767170000000004], [37.993100000000005, 23.766750000000002], [37.992070000000005, 23.766240000000003], [37.99147, 23.765960000000003], [37.9913, 23.765870000000003], [37.99107, 23.765680000000003], [37.99071, 23.765390000000004], [37.99031, 23.765040000000003], [37.989380000000004, 23.764260000000004], [37.988850000000006, 23.763820000000003], [37.988690000000005, 23.76369], [37.988580000000006, 23.763550000000002], [37.988330000000005, 23.763240000000003], [37.98798, 23.76281], [37.987550000000006, 23.762300000000003], [37.98729, 23.76198], [37.98687, 23.761570000000003], [37.986450000000005, 23.761200000000002], [37.98595, 23.76086], [37.98559, 23.76059], [37.98556000000001, 23.760550000000002], [37.985490000000006, 23.76048], [37.98539, 23.76041], [37.98500000000001, 23.760040000000004], [37.98427, 23.759240000000002], [37.983850000000004, 23.758760000000002], [37.98358, 23.758450000000003], [37.98346, 23.758280000000003], [37.98335, 23.758090000000003], [37.983090000000004, 23.757600000000004], [37.982710000000004, 23.75684], [37.98254, 23.756570000000004], [37.982150000000004, 23.75607], [37.98138, 23.75533], [37.980920000000005, 23.754880000000004], [37.980410000000006, 23.754420000000003], [37.97995, 23.753970000000002], [37.97955, 23.753510000000002], [37.97863, 23.75242], [37.97822, 23.75195], [37.97805, 23.75176], [37.977810000000005, 23.75147], [37.977340000000005, 23.75082], [37.9771, 23.750470000000004], [37.97708, 23.750300000000003], [37.97699, 23.749950000000002], [37.976890000000004, 23.7496], [37.976820000000004, 23.7493], [37.976530000000004, 23.748130000000003], [37.97639, 23.747480000000003], [37.976200000000006, 23.746640000000003], [37.9761, 23.7462], [37.97605, 23.745990000000003], [37.97599, 23.74577], [37.975880000000004, 23.74556], [37.9758, 23.745230000000003], [37.97571000000001, 23.744790000000002], [37.975550000000005, 23.744100000000003], [37.97536, 23.7433], [37.97533, 23.74312], [37.97532, 23.74286], [37.975410000000004, 23.74227], [37.975530000000006, 23.741380000000003], [37.97569, 23.73994], [37.976110000000006, 23.736770000000003], [37.976150000000004, 23.736490000000003], [37.976200000000006, 23.7362], [37.97627000000001, 23.73601], [37.97641, 23.735830000000004], [37.97686, 23.73589], [37.976940000000006, 23.735840000000003], [37.977180000000004, 23.735660000000003], [37.977590000000006, 23.735280000000003], [37.97867, 23.734360000000002], [37.98053, 23.732750000000003], [37.982580000000006, 23.73101], [37.98319, 23.730490000000003], [37.983670000000004, 23.730120000000003], [37.983790000000006, 23.729960000000002], [37.983880000000006, 23.729480000000002], [37.98402, 23.728650000000002], [37.98405, 23.728600000000004], [37.984120000000004, 23.728540000000002], [37.9842, 23.728520000000003], [37.984280000000005, 23.728460000000002], [37.984350000000006, 23.72838], [37.9844, 23.72828], [37.98442, 23.7282], [37.98442, 23.72803], [37.984410000000004, 23.727960000000003], [37.984370000000006, 23.72781], [37.98425, 23.72756], [37.984230000000004, 23.72747], [37.984280000000005, 23.727100000000004], [37.98433, 23.72681], [37.98398, 23.726740000000003], [37.98362, 23.726670000000002], [37.98348, 23.72661], [37.983430000000006, 23.7266], [37.983790000000006, 23.727430000000002], [37.983830000000005, 23.72754], [37.983810000000005, 23.727780000000003], [37.98373, 23.72821]],
+                {"bubblingMouseEvents": true, "color": "red", "dashArray": null, "dashOffset": null, "fill": false, "fillColor": "red", "fillOpacity": 0.2, "fillRule": "evenodd", "lineCap": "round", "lineJoin": "round", "noClip": false, "opacity": 1.0, "smoothFactor": 1.0, "stroke": true, "weight": 6}
+            ).addTo(map_95f9ff089942e4d2a5e4fe6d2ca2f779);
+        
+    
+            poly_line_be10698db31d3d8fb9457c816e772ab0.bindTooltip(
+                `<div>
+                     Route: GMZ → TWKZB, 75,000 units
+                 </div>`,
+                {"sticky": true}
+            );
+        
+</script>
+</html>
